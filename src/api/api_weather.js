@@ -18,3 +18,16 @@ export const fetchWeather  = {
             })
     },
 }
+
+export const fetchIp  = {
+    fromCurrent() {
+        return axios.get('https://ipapi.co/json/')
+            .then(response => {
+                return response.data;
+            })
+            .catch((err) => {
+                console.log('no data')
+            })
+    },
+}
+

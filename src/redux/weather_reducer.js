@@ -1,4 +1,4 @@
-import {fetchWeather} from "../api/api_weather";
+import {fetchIp, fetchWeather} from "../api/api_weather";
 
 const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 const SET_SETTINGS = 'SET_SETTINGS';
@@ -10,7 +10,7 @@ const initialState = {
         return this.currentWeather;
     },
     settings: {
-        location: 'Novoaltaysk',
+        location: 'Tokyo',
         //location: 'Tokyo',
     },
     isLoading: false,
@@ -52,6 +52,15 @@ export const handleCurrentWeather = (settings) => {
         dispatch(setCurrentWeather({}));
         fetchWeather.fromCurrent(settings).then(data => {
             dispatch(setCurrentWeather(data));
+        });
+    }
+}
+
+export const handleCurrentIp = () => {
+    return (dispatch) => {
+        fetchIp.fromCurrent().then(data => {
+            console.log(data)
+            dispatch(setSettings({location:data.city}));
         });
     }
 }
