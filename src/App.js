@@ -7,11 +7,8 @@ import Weather from "./components/Weather";
 let App = () => {
 
     return (<>
-            <header>
-                <NavLink to="/" >Weather</NavLink>
-            </header>
         <Routes>
-            <Route path='/' element={<Weather stateButton='0'/>} />
+            <Route path='/' element={<Weather stateButton='0'/>}/>
         </Routes>
         </>
     )

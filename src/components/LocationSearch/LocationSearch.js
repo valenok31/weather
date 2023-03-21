@@ -15,20 +15,18 @@ function LocationSearch(props) {
             //console.log(JSON.stringify(values, null, 2));
         },
     });
-    return (
-        <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="firstName">Location search</label>
-            <input
-                id="location"
-                name="location"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.location}
-            />
+    return <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="firstName">Location search</label>
+        <input
+            id="location"
+            name="location"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.location}
+        />
 
-            <button type="submit">Search</button>
-        </form>
-    );
+        <button type="submit">Search</button>
+    </form>
 }
 
 export default LocationSearch;
