@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Weather.module.css'
-import {handleCurrentIp, handleCurrentWeather, setSettings} from "../redux/weather_reducer";
+import {handleCurrentIp, handleCurrentWeather, handleForecastWeather, setSettings} from "../redux/weather_reducer";
 import {connect} from "react-redux";
 import Preloader from "./Preloader/Preloader";
 import LocationSearch from "./LocationSearch/LocationSearch";
@@ -13,16 +13,18 @@ class Weather extends React.Component {
 
     componentDidMount() {
         this.props.handleCurrentIp();
-        this.props.handleCurrentWeather(this.props.getSettings);
+        //this.props.handleCurrentWeather(this.props.getSettings);
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.getSettings !== prevProps.getSettings) {
             this.props.handleCurrentWeather(this.props.getSettings);
+            this.props.handleForecastWeather(this.props.getSettings);
         }
     }
 
     render() {
+
 
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
@@ -54,18 +56,25 @@ class Weather extends React.Component {
         } else {
             return <Preloader/>
         }
+
     }
 }
 
 let mapStateToProps = (state) => {
     return ({
         getCurrentWeather: state.weather_reducer.currentWeather,
+        getForecastWeather: state.weather_reducer.forecastWeather,
         getSettings: state.weather_reducer.settings,
         getIsLoading: state.weather_reducer.isLoading,
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {handleCurrentWeather, setSettings, handleCurrentIp})(Weather);
+let resultConnecting = connect(mapStateToProps, {
+    handleCurrentWeather,
+    handleForecastWeather,
+    setSettings,
+    handleCurrentIp
+})(Weather);
 
 export default resultConnecting;
 
