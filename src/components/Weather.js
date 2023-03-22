@@ -45,12 +45,8 @@ class Weather extends React.Component {
                                         getSettings={this.props.getSettings}/>
 
                     </div>
-                    <div className={s.header} style={temperatureGradient(temp)}>
-                        <div className={s.container}>
-                            <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
-                                           windKph={windKph}/>
-                        </div>
-                    </div>
+                    <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
+                                   windKph={windKph}/>
                 </>
             )
         } else {

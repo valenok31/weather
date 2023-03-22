@@ -14,6 +14,7 @@ export const fetchWeather  = {
                 return response.data;
             })
             .catch((err) => {
+                // TODO: response in case of error
                 console.log('no data')
             })
     },
@@ -26,6 +27,7 @@ export const fetchWeather  = {
                 return response.data;
             })
             .catch((err) => {
+                // TODO: response in case of error
                 console.log('no data')
             })
     },
@@ -39,6 +41,7 @@ export const fetchIp  = {
                 return response.data;
             })
             .catch((err) => {
+                // TODO: response in case of error
                 console.log('no data')
             })
     },
