@@ -5,6 +5,8 @@ import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
 
 let d = 0;
 let h = 0;
+let initializeK= 0;
+
 
 function dayHours(k) {
     if (k <= 71) {
@@ -23,23 +25,26 @@ function dayHours(k) {
 
 
 export function HeaderContent(props) {
+    let date = new Date(props.currentWeather.last_updated);
+    console.log(date.getHours());
+    initializeK = date.getHours();
 
-    const [k, valueChange] = useState(0);
+    const [k, valueChange] = useState(initializeK);
 
     dayHours(k);
 
     let tempI = props.nextDay[d].hour[h].temp_c
-    tempI = Math.round(tempI);
+    //tempI = Math.round(tempI);
 
     let windDegree = props.nextDay[d].hour[h].wind_degree
     let windKph = props.nextDay[d].hour[h].wind_mph;
 
     function getOnWheel(e) {
-        if (e.deltaY < 0) {
-            if (k < 0) valueChange(0)
-            if (k > 0) valueChange(k - 1)
+        if (e.deltaY < initializeK) {
+            if (k < initializeK) valueChange(initializeK)
+            if (k > initializeK) valueChange(k - 1)
         }
-        if (e.deltaY > 0) {
+        if (e.deltaY > initializeK) {
             if (k > 71) valueChange(71)
             if (k < 71) valueChange(k + 1)
         }

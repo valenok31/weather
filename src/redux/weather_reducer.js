@@ -84,7 +84,7 @@ export const handleForecastWeather = (settings) => {
 export const handleCurrentIp = () => {
     return (dispatch) => {
         fetchIp.fromCurrent().then(data => {
-            console.log(data)
+            //console.log(data)
             // TODO: validation data.city
             dispatch(setSettings({location:data.city}));
         });
