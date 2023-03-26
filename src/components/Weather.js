@@ -8,6 +8,7 @@ import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
 import {windVisualization} from "./accessoryFunctions/windVisualization";
 import {HeaderContent} from "./HeaderContent";
 import iconSearch from "./icons/iconSearch.png"
+import LocationOutput from "./LocationOutput/LocationOutput";
 
 class Weather extends React.Component {
 
@@ -38,11 +39,10 @@ class Weather extends React.Component {
 
             return (<>
                     <div className={s.header__top}>
-                        {currentLocation.name} / {currentLocation.region}, {currentLocation.country}
-                        <img src={iconSearch} className={s.iconSearch}/>
+                        {false ? <LocationOutput currentLocation={currentLocation}/> :
+                            <LocationSearch setSettings={this.props.setSettings}
+                                            getSettings={this.props.getSettings}/>}
 
-                        <LocationSearch setSettings={this.props.setSettings}
-                                        getSettings={this.props.getSettings}/>
 
                     </div>
                     <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
