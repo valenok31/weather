@@ -1,13 +1,16 @@
 import React from "react";
 import s from './Weather.module.css'
-import {handleCurrentIp, handleCurrentWeather, handleForecastWeather, setSettings} from "../redux/weather_reducer";
+import {
+    handleCurrentIp,
+    handleCurrentWeather,
+    handleForecastWeather,
+    setSettings,
+    toggleIsLocationView
+} from "../redux/weather_reducer";
 import {connect} from "react-redux";
 import Preloader from "./Preloader/Preloader";
 import LocationSearch from "./LocationSearch/LocationSearch";
-import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
-import {windVisualization} from "./accessoryFunctions/windVisualization";
 import {HeaderContent} from "./HeaderContent";
-import iconSearch from "./icons/iconSearch.png"
 import LocationOutput from "./LocationOutput/LocationOutput";
 
 class Weather extends React.Component {
@@ -18,7 +21,7 @@ class Weather extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.getSettings !== prevProps.getSettings) {
+        if (this.props.getSettings !== prevProps.getSettings || this.props.getIsLocationView !== prevProps.getIsLocationView) {
             this.props.handleCurrentWeather(this.props.getSettings);
             this.props.handleForecastWeather(this.props.getSettings);
         }
@@ -39,11 +42,9 @@ class Weather extends React.Component {
 
             return (<>
                     <div className={s.header__top}>
-                        {false ? <LocationOutput currentLocation={currentLocation}/> :
+                        {this.props.getIsLocationView ? <LocationOutput currentLocation={currentLocation} toggleIsLocationView={toggleIsLocationView}/> :
                             <LocationSearch setSettings={this.props.setSettings}
                                             getSettings={this.props.getSettings}/>}
-
-
                     </div>
                     <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
                                    windKph={windKph}/>
@@ -62,6 +63,7 @@ let mapStateToProps = (state) => {
         getForecastWeather: state.weather_reducer.forecastWeather,
         getSettings: state.weather_reducer.settings,
         getIsLoading: state.weather_reducer.isLoading,
+        getIsLocationView: state.weather_reducer.isLocationView,
     })
 };
 
@@ -69,7 +71,8 @@ let resultConnecting = connect(mapStateToProps, {
     handleCurrentWeather,
     handleForecastWeather,
     setSettings,
-    handleCurrentIp
+    handleCurrentIp,
+    toggleIsLocationView
 })(Weather);
 
 export default resultConnecting;

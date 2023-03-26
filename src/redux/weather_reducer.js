@@ -1,9 +1,11 @@
 import {fetchIp, fetchWeather} from "../api/api_weather";
+import LocationSearch from "../components/LocationSearch/LocationSearch";
 
 const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 const SET_FORECAST_WEATHER = 'SET_FORECAST_WEATHER';
 const SET_SETTINGS = 'SET_SETTINGS';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
+const TOGGLE_IS_LOCATION_VIEW = 'TOGGLE_IS_LOCATION_VIEW';
 
 const initialState = {
     // TODO: language selection
@@ -16,6 +18,7 @@ const initialState = {
         return this.forecastWeather;
     },
     providingWeather: "forecast",
+    isLocationView: true,
     settings: {
         location: 'auto:ip',
         //location: 'Tokyo',
@@ -49,6 +52,12 @@ const weather_reducer = (state = initialState, action) => {
                 isLoading: action.isLoading,
             }
 
+        case TOGGLE_IS_LOCATION_VIEW:
+            return {
+                ...state,
+                isLocationView: action.isLocationView,
+            }
+
         default:
             return state;
     }
@@ -59,6 +68,7 @@ export const setCurrentWeather = (currentWeather) => ({type: SET_CURRENT_WEATHER
 export const setForecastWeather = (forecastWeather) => ({type: SET_FORECAST_WEATHER, forecastWeather});
 export const setSettings = (settings) => ({type: SET_SETTINGS, settings});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
+export const toggleIsLocationView = (isLocationView) => ({type: TOGGLE_IS_LOCATION_VIEW, isLocationView});
 
 export const handleCurrentWeather = (settings) => {
     return (dispatch) => {
