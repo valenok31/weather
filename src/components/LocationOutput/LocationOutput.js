@@ -6,14 +6,15 @@ import {toggleIsLocationView} from "../../redux/weather_reducer";
 function LocationOutput(props) {
 
     function isLocationView (){
-        console.log('isLocationView')
-        // TODO: not work
-      props.toggleIsLocationView('false');
+      props.toggleIsLocationView(false);
     }
 
     return <>
-        {props.currentLocation.name} / {props.currentLocation.region}, {props.currentLocation.country}
-        <img src={iconSearch} className={s.iconSearch} onClick={()=>{isLocationView()}}/>
+        <div onClick={()=>{isLocationView()}}>
+            {props.currentLocation.name} / {props.currentLocation.region}, {props.currentLocation.country}
+            <img src={iconSearch} className={s.iconSearch}/>
+        </div>
+
     </>
 }
 

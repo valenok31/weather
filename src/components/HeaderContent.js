@@ -26,7 +26,6 @@ function dayHours(k) {
 
 export function HeaderContent(props) {
     let date = new Date(props.currentWeather.last_updated);
-    console.log(date.getHours());
     initializeK = date.getHours();
 
     const [k, valueChange] = useState(initializeK);

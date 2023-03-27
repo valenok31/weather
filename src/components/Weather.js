@@ -21,7 +21,7 @@ class Weather extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.getSettings !== prevProps.getSettings || this.props.getIsLocationView !== prevProps.getIsLocationView) {
+        if (this.props.getSettings !== prevProps.getSettings) {
             this.props.handleCurrentWeather(this.props.getSettings);
             this.props.handleForecastWeather(this.props.getSettings);
         }
@@ -42,9 +42,13 @@ class Weather extends React.Component {
 
             return (<>
                     <div className={s.header__top}>
-                        {this.props.getIsLocationView ? <LocationOutput currentLocation={currentLocation} toggleIsLocationView={toggleIsLocationView}/> :
+                        {this.props.getIsLocationView ?
+                            <LocationOutput currentLocation={currentLocation}
+                                            toggleIsLocationView={this.props.toggleIsLocationView}/> :
                             <LocationSearch setSettings={this.props.setSettings}
-                                            getSettings={this.props.getSettings}/>}
+                                            getSettings={this.props.getSettings}
+                                            currentLocation={currentLocation}
+                                            toggleIsLocationView={this.props.toggleIsLocationView}/>}
                     </div>
                     <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
                                    windKph={windKph}/>
