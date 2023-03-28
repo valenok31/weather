@@ -33,7 +33,7 @@ export function HeaderContent(props) {
     dayHours(k);
 
     let tempI = props.nextDay[d].hour[h].temp_c
-    //tempI = Math.round(tempI);
+    tempI = Math.round(tempI);
 
     let windDegree = props.nextDay[d].hour[h].wind_degree
     let windKph = props.nextDay[d].hour[h].wind_mph;
@@ -56,6 +56,8 @@ export function HeaderContent(props) {
                 <div className={s.content__current_weather}>
                     <div className={s.content__data_current}>
                         {props.nextDay[d].hour[h].time}
+                        <img src={props.nextDay[d].hour[h].condition.icon} alt={props.nextDay[d].hour[h].condition.text}/>
+
                     </div>
                     <div className={s.content__temp_current}>
                         {tempI > 0 ? '+' : ''}{tempI}°

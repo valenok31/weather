@@ -12,6 +12,7 @@ function LocationOutput(props) {
     return <>
         <div onClick={()=>{isLocationView()}}>
             {props.currentLocation.name} / {props.currentLocation.region}, {props.currentLocation.country}
+            <span>   </span>
             <img src={iconSearch} className={s.iconSearch}/>
         </div>
 
