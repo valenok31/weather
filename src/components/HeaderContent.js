@@ -57,7 +57,6 @@ export function HeaderContent(props) {
                     <div className={s.content__data_current}>
                         {props.nextDay[d].hour[h].time}
                         <img src={props.nextDay[d].hour[h].condition.icon} alt={props.nextDay[d].hour[h].condition.text}/>
-
                     </div>
                     <div className={s.content__temp_current}>
                         {tempI > 0 ? '+' : ''}{tempI}°
