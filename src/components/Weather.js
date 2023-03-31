@@ -12,6 +12,7 @@ import Preloader from "./Preloader/Preloader";
 import LocationSearch from "./LocationSearch/LocationSearch";
 import {HeaderContent} from "./HeaderContent";
 import LocationOutput from "./LocationOutput/LocationOutput";
+import {Link} from "react-router-dom";
 
 class Weather extends React.Component {
 
@@ -41,7 +42,25 @@ class Weather extends React.Component {
             //console.log(window)
 
             return (<>
+
                     <div className={s.header__top}>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <Link to="/">Home</Link>
+                                </li>
+                                <li>
+                                    <Link to="/current">Current</Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </li>
+                                <li>
+                                    <Link to="/nothing-here">Nothing Here</Link>
+                                </li>
+                            </ul>
+                        </nav>
+
                         {this.props.getIsLocationView ?
                             <LocationOutput currentLocation={currentLocation}
                                             toggleIsLocationView={this.props.toggleIsLocationView}/> :
@@ -57,7 +76,6 @@ class Weather extends React.Component {
         } else {
             return <Preloader/>
         }
-
     }
 }
 
