@@ -3,6 +3,7 @@ import {Routes, Route, Link, NavLink} from 'react-router-dom';
 import React from "react";
 import Weather from "./components/Weather";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
+import WeatherList from "./components/WeatherList/WeatherList";
 
 
 let App = () => {
@@ -14,7 +15,7 @@ let App = () => {
                         <Link to="/">Forecast for 3 days (hourly)</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard">Forecast for 3 days (list)</Link>
+                        <Link to="/weatherlist">Forecast for 3 days (list)</Link>
                     </li>
                     <li>
                         <Link to="/current">Current</Link>
@@ -23,6 +24,7 @@ let App = () => {
             </nav>
             <Routes>
                 <Route path='/' element={<Weather stateButton='0'/>}/>
+                <Route path='/weatherlist' element={<WeatherList/>}/>
                 <Route path='/current' element={<CurrentWeather/>}/>
             </Routes>
         </div>
