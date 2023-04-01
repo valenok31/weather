@@ -1,0 +1,22 @@
+.app__header {
+  display: grid;
+  grid-template-columns: 200px auto;
+  height: 100vh;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+li{
+  width: 100px;
+  height: 100px;
+  border: coral solid 1px;
+  list-style-type:none;
+  margin: 10px 50px;
+  padding: 0;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
