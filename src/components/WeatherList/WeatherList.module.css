@@ -1,0 +1,21 @@
+.header__top{
+    position: absolute;
+    /*width:100%;*/
+    min-height: 50px;
+    text-align: center;
+    /*padding: 20px;*/
+    z-index: 199;
+}
+
+.table{
+display: flex;
+}
+
+.table div{
+
+    width: 100px;
+    height: 100px;
+    border: gray solid 1px;
+margin: auto;
+
+}
