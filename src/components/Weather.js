@@ -12,12 +12,10 @@ import Preloader from "./Preloader/Preloader";
 import LocationSearch from "./LocationSearch/LocationSearch";
 import {HeaderContent} from "./HeaderContent";
 import LocationOutput from "./LocationOutput/LocationOutput";
-import {Link} from "react-router-dom";
 
 class Weather extends React.Component {
 
     componentDidMount() {
-        //this.props.handleCurrentIp();
         this.props.handleCurrentWeather(this.props.getSettings);
         this.props.handleForecastWeather(this.props.getSettings);
     }
