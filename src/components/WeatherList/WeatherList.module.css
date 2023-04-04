@@ -9,13 +9,22 @@
 
 .table{
 display: flex;
+    height: 100%;
 }
 
-.table div{
-
-    width: 100px;
-    height: 100px;
-    border: gray solid 1px;
+.forecastday__box{
 margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 450px;
+}
 
+.forecastday__day{
+
+
+}
+
+.img__direction{
+    height: 15px;
+    width: 15px;
 }

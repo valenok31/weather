@@ -12,6 +12,7 @@ import LocationOutput from "../LocationOutput/LocationOutput";
 import LocationSearch from "../LocationSearch/LocationSearch";
 import {HeaderContent} from "../HeaderContent";
 import Preloader from "../Preloader/Preloader";
+import {WeatherForecastGrid} from "./WeatherForecastGrid";
 
 class WeatherList extends React.Component {
 
@@ -40,16 +41,6 @@ class WeatherList extends React.Component {
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
             //console.log(window)
-            let nextDayArr = nextDay.map((forecastday)=>{
-                // TODO: css!!
-              return  <div>
-                    <div>{forecastday.date}</div>
-                    <div>{forecastday.day.mintemp_c} ... {forecastday.day.maxtemp_c}</div>
-                    <div>{forecastday.day.maxwind_mph} m/s</div>
-                    <div>{forecastday.day.avghumidity} %</div>
-                </div>
-            })
-
             return (<>
                     <div>
                         <div className={s.header__top}>
@@ -62,7 +53,7 @@ class WeatherList extends React.Component {
                                                 toggleIsLocationView={this.props.toggleIsLocationView}/>}
                         </div>
                         <div className={s.table}>
-                            {nextDayArr}
+                            <WeatherForecastGrid nextDay={nextDay}/>
                         </div>
                         <div>
                         </div>
