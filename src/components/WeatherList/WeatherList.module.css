@@ -1,6 +1,6 @@
 .header__top{
     position: absolute;
-    /*width:100%;*/
+    width: calc(100% - 200px);
     min-height: 50px;
     text-align: center;
     /*padding: 20px;*/
@@ -25,6 +25,17 @@ margin: auto;
 }
 
 .img__direction{
+    margin: auto;
     height: 15px;
     width: 15px;
+}
+
+.img_direction__circle{
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    border-radius: 20px;
+    background-color: white;
+    margin-left: 5px;
+
 }

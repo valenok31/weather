@@ -13,6 +13,7 @@ import LocationSearch from "../LocationSearch/LocationSearch";
 import {HeaderContent} from "../HeaderContent";
 import Preloader from "../Preloader/Preloader";
 import {WeatherForecastGrid} from "./WeatherForecastGrid";
+import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 
 class WeatherList extends React.Component {
 

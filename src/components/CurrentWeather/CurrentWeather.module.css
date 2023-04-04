@@ -1,6 +1,6 @@
 .header__top{
     position: absolute;
-    /*width:100%;*/
+    width: calc(100% - 200px);
     min-height: 50px;
     text-align: center;
     /*padding: 20px;*/

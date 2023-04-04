@@ -3,7 +3,7 @@ import {useFormik} from "formik";
 
 function LocationSearch(props) {
 
-    function isLocationView (){
+    function isLocationView() {
         props.toggleIsLocationView(true);
     }
 
@@ -25,15 +25,18 @@ function LocationSearch(props) {
     return <form onSubmit={formik.handleSubmit}>
         <label htmlFor="firstName">Location search</label>
         <input autoFocus={true}
-            id="location"
-            name="location"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.location}
+               id="location"
+               name="location"
+               type="text"
+               onChange={formik.handleChange}
+               value={formik.values.location}
         />
 
         <button type="submit">Search</button>
-        <button type="reset" onClick={()=>{isLocationView()}}>cancel</button>
+        <button type="reset" onClick={() => {
+            isLocationView()
+        }}>cancel
+        </button>
     </form>
 }
 
