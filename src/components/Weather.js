@@ -40,6 +40,9 @@ class Weather extends React.Component {
             let windKph = currentWeather.wind_kph;
             //console.log(window)
 
+
+
+
             return (<>
 <div>
                     <div className={s.header__top}>
@@ -52,7 +55,7 @@ class Weather extends React.Component {
                                             toggleIsLocationView={this.props.toggleIsLocationView}/>}
                     </div>
                     <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
-                                   windKph={windKph}/>
+                                   windKph={windKph} toggleIsLocationView={this.props.toggleIsLocationView} />
 </div>
                 </>
             )

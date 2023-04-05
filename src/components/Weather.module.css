@@ -122,3 +122,20 @@ display: inline;
 nav{
     background-color: antiquewhite;
 }
+
+
+.img__direction{
+    margin: auto;
+    height: 15px;
+    width: 15px;
+}
+
+.img_direction__circle{
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    border-radius: 20px;
+    background-color: white;
+    margin-left: 5px;
+
+}

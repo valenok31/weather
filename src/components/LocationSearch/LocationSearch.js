@@ -9,7 +9,6 @@ function LocationSearch(props) {
 
     // Pass the useFormik() hook initial form values and a submit function that will
     // be called when the form is submitted
-    // TODO: don't work 'submit'
     const formik = useFormik({
         initialValues: {
             //location: props.getSettings.location,

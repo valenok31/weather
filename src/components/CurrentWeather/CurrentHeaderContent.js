@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import s from "../Weather.module.css";
 import {windVisualization} from "../accessoryFunctions/windVisualization";
 import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
+import direction from "../icons/direction.png";
 
 export function HeaderContent(props) {
 
@@ -34,7 +35,10 @@ export function HeaderContent(props) {
                         <div className={s.details_current__parameter}>Wind:</div>
                         <div
                             className={s.details_current__value}>{Math.round(windKph * 10 / 3.6) / 10} m/s
-                            ({props.currentWeather.wind_dir})
+                            <div className={s.img_direction__circle}>
+                                <img src={direction} className={s.img__direction}
+                                     style={{transform: `rotate(${props.currentWeather.wind_degree + 180}deg)`}}/>
+                            </div>
                         </div>
                     </div>
                 </div>
