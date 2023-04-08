@@ -4,10 +4,10 @@ import direction from "../icons/direction.png";
 import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 
 export function WeatherForecastGrid(props) {
-function roundFunc(numbers){
+    function roundFunc(numbers) {
 
-    return (numbers > 0 ? '+' : '') + Math.round(numbers);
-}
+        return (numbers > 0 ? '+' : '') + Math.round(numbers);
+    }
 
     let nextDayArr = props.nextDay.map((forecastday) => {
         return <div className={s.forecastday__day}
@@ -26,7 +26,5 @@ function roundFunc(numbers){
             </div>
         </div>
     })
-    return <div className={s.forecastday__box}>
-        {nextDayArr}
-    </div>
+    return <>{nextDayArr}</>
 }

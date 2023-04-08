@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {
     handleCurrentIp,
     handleCurrentWeather,
-    handleForecastWeather,
+    handleForecastWeather, handleHistoryWeather,
     setSettings,
     toggleIsLocationView
 } from "../../redux/weather_reducer";
@@ -22,24 +22,30 @@ class WeatherList extends React.Component {
         //this.props.handleCurrentIp();
         this.props.handleCurrentWeather(this.props.getSettings);
         this.props.handleForecastWeather(this.props.getSettings);
+        this.props.handleHistoryWeather(this.props.getSettings);
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.getSettings !== prevProps.getSettings) {
             this.props.handleCurrentWeather(this.props.getSettings);
             this.props.handleForecastWeather(this.props.getSettings);
+            this.props.handleHistoryWeather(this.props.getSettings);
         }
     }
 
     render() {
 
 
-        if (!!this.props.getCurrentWeather.current) {
+        if (!!this.props.getCurrentWeather.current && !!this.props.getHistoryWeather.forecast) {
             let getWeather = this.props.getCurrentWeather
             let temp = getWeather.current.temp_c;
             let currentLocation = getWeather.location
             let currentWeather = getWeather.current
             let nextDay = getWeather.forecast.forecastday
+            let lastDay = this.props.getHistoryWeather.forecast.forecastday
+            console.log(lastDay)
+            console.log(nextDay)
+
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
             //console.log(window)
@@ -55,8 +61,10 @@ class WeatherList extends React.Component {
                                                 toggleIsLocationView={this.props.toggleIsLocationView}/>}
                         </div>
                         <div className={s.table}>
-                            <WeatherHistoryGrid nextDay={nextDay}/>
-                            <WeatherForecastGrid nextDay={nextDay}/>
+                            <div className={s.forecastday__box}>
+                                <WeatherHistoryGrid nextDay={lastDay}/>
+                                <WeatherForecastGrid nextDay={nextDay}/>
+                            </div>
                         </div>
                         <div>
                         </div>
@@ -73,6 +81,7 @@ let mapStateToProps = (state) => {
     return ({
         getCurrentWeather: state.weather_reducer.currentWeather,
         getForecastWeather: state.weather_reducer.forecastWeather,
+        getHistoryWeather: state.weather_reducer.historyWeather,
         getSettings: state.weather_reducer.settings,
         getIsLoading: state.weather_reducer.isLoading,
         getIsLocationView: state.weather_reducer.isLocationView,
@@ -82,6 +91,7 @@ let mapStateToProps = (state) => {
 let resultConnecting = connect(mapStateToProps, {
     handleCurrentWeather,
     handleForecastWeather,
+    handleHistoryWeather,
     setSettings,
     handleCurrentIp,
     toggleIsLocationView

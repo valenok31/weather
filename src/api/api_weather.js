@@ -981,6 +981,21 @@ export const fetchWeather = {
                 return errData;
             })
     },
+    fromHistory(settings) {
+        const instanceRecreation = axios.create({
+            baseURL: `https://api.weatherapi.com/v1/`,
+        })
+        // TODO: end_dt and dt
+        return instanceRecreation.get(`history.json?key=4e29dfe6fb834ea29ab152532232301&q=${settings.location}&end_dt=2023-04-07&dt=2023-04-02`)
+            .then(response => {
+                return response.data;
+            })
+            .catch((err) => {
+                // TODO: response in case of error
+                console.log('no data')
+                return errData;
+            })
+    },
 }
 
 export const fetchIp = {

@@ -3,6 +3,7 @@ import LocationSearch from "../components/LocationSearch/LocationSearch";
 
 const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 const SET_FORECAST_WEATHER = 'SET_FORECAST_WEATHER';
+const SET_HISTORY_WEATHER = 'SET_HISTORY_WEATHER';
 const SET_SETTINGS = 'SET_SETTINGS';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const TOGGLE_IS_LOCATION_VIEW = 'TOGGLE_IS_LOCATION_VIEW';
@@ -16,6 +17,10 @@ const initialState = {
     forecastWeather: {},
     getForecastWeather() {
         return this.forecastWeather;
+    },
+    historyWeather: {},
+    getHistoryWeather() {
+        return this.historyWeather;
     },
     providingWeather: "forecast",
     isLocationView: true,
@@ -38,6 +43,11 @@ const weather_reducer = (state = initialState, action) => {
             return {
                 ...state,
                 forecastWeather: action.forecastWeather
+            }
+        case SET_HISTORY_WEATHER:
+            return {
+                ...state,
+                historyWeather: action.historyWeather
             }
 
         case SET_SETTINGS:
@@ -66,6 +76,7 @@ const weather_reducer = (state = initialState, action) => {
 
 export const setCurrentWeather = (currentWeather) => ({type: SET_CURRENT_WEATHER, currentWeather});
 export const setForecastWeather = (forecastWeather) => ({type: SET_FORECAST_WEATHER, forecastWeather});
+export const setHistoryWeather = (historyWeather) => ({type: SET_HISTORY_WEATHER, historyWeather});
 export const setSettings = (settings) => ({type: SET_SETTINGS, settings});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
 export const toggleIsLocationView = (isLocationView) => ({type: TOGGLE_IS_LOCATION_VIEW, isLocationView});
@@ -88,6 +99,14 @@ export const handleForecastWeather = (settings) => {
     }
 }
 
+export const handleHistoryWeather = (settings) => {
+    return (dispatch) => {
+        dispatch(setHistoryWeather({}));
+        fetchWeather.fromHistory(settings).then(data => {
+            dispatch(setHistoryWeather(data));
+        });
+    }
+}
 
 
 
