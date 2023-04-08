@@ -14,6 +14,7 @@ import {HeaderContent} from "../HeaderContent";
 import Preloader from "../Preloader/Preloader";
 import {WeatherForecastGrid} from "./WeatherForecastGrid";
 import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
+import {WeatherHistoryGrid} from "./WeatherHistoryGrid";
 
 class WeatherList extends React.Component {
 
@@ -54,6 +55,7 @@ class WeatherList extends React.Component {
                                                 toggleIsLocationView={this.props.toggleIsLocationView}/>}
                         </div>
                         <div className={s.table}>
+                            <WeatherHistoryGrid nextDay={nextDay}/>
                             <WeatherForecastGrid nextDay={nextDay}/>
                         </div>
                         <div>
