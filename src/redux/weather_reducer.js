@@ -6,6 +6,7 @@ const SET_FORECAST_WEATHER = 'SET_FORECAST_WEATHER';
 const SET_HISTORY_WEATHER = 'SET_HISTORY_WEATHER';
 const SET_SETTINGS = 'SET_SETTINGS';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
+const TOGGLE_IS_NOT_FOUND = 'TOGGLE_IS_NOT_FOUND';
 const TOGGLE_IS_LOCATION_VIEW = 'TOGGLE_IS_LOCATION_VIEW';
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
         //location: 'Tokyo',
     },
     isLoading: false,
+    isNotFound: false,
 };
 
 const weather_reducer = (state = initialState, action) => {
@@ -62,6 +64,12 @@ const weather_reducer = (state = initialState, action) => {
                 isLoading: action.isLoading,
             }
 
+        case TOGGLE_IS_NOT_FOUND:
+            return {
+                ...state,
+                isNotFound: action.isNotFound,
+            }
+
         case TOGGLE_IS_LOCATION_VIEW:
             return {
                 ...state,
@@ -79,6 +87,7 @@ export const setForecastWeather = (forecastWeather) => ({type: SET_FORECAST_WEAT
 export const setHistoryWeather = (historyWeather) => ({type: SET_HISTORY_WEATHER, historyWeather});
 export const setSettings = (settings) => ({type: SET_SETTINGS, settings});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
+export const toggleIsNotFound = (isNotFound) => ({type: TOGGLE_IS_NOT_FOUND, isNotFound});
 export const toggleIsLocationView = (isLocationView) => ({type: TOGGLE_IS_LOCATION_VIEW, isLocationView});
 
 export const handleCurrentWeather = (settings) => {
@@ -86,16 +95,27 @@ export const handleCurrentWeather = (settings) => {
         dispatch(setCurrentWeather({}));
         fetchWeather.fromCurrent(settings).then(data => {
             dispatch(setCurrentWeather(data));
-        });
+            dispatch(toggleIsNotFound(false));
+        }).catch(err => {
+                console.log(err)
+                dispatch(toggleIsNotFound(true));
+            }
+        );
     }
 }
 
 export const handleForecastWeather = (settings) => {
     return (dispatch) => {
         dispatch(setForecastWeather({}));
+
         fetchWeather.fromForecast(settings).then(data => {
             dispatch(setForecastWeather(data));
-        });
+            dispatch(toggleIsNotFound(false));
+        }).catch(err => {
+                console.log(err)
+                dispatch(toggleIsNotFound(true));
+            }
+        );
     }
 }
 
@@ -104,10 +124,14 @@ export const handleHistoryWeather = (settings) => {
         dispatch(setHistoryWeather({}));
         fetchWeather.fromHistory(settings).then(data => {
             dispatch(setHistoryWeather(data));
-        });
+            dispatch(toggleIsNotFound(false));
+        }).catch(err => {
+                console.log(err)
+                dispatch(toggleIsNotFound(true));
+            }
+        );
     }
 }
-
 
 
 export const handleCurrentIp = () => {
@@ -115,7 +139,7 @@ export const handleCurrentIp = () => {
         fetchIp.fromCurrent().then(data => {
             //console.log(data)
             // TODO: validation data.city
-            dispatch(setSettings({location:data.city}));
+            dispatch(setSettings({location: data.city}));
         });
     }
 }

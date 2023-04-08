@@ -5,7 +5,7 @@ import {
     handleCurrentWeather,
     handleForecastWeather, handleHistoryWeather,
     setSettings,
-    toggleIsLocationView
+    toggleIsLocationView, toggleIsNotFound
 } from "../../redux/weather_reducer";
 import s from "./WeatherList.module.css";
 import LocationOutput from "../LocationOutput/LocationOutput";
@@ -15,6 +15,7 @@ import Preloader from "../Preloader/Preloader";
 import {WeatherForecastGrid} from "./WeatherForecastGrid";
 import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 import {WeatherHistoryGrid} from "./WeatherHistoryGrid";
+import NothingFound from "../NothingFound/NothingFound";
 
 class WeatherList extends React.Component {
 
@@ -26,7 +27,7 @@ class WeatherList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.getSettings !== prevProps.getSettings) {
+        if (this.props.getSettings !== prevProps.getSettings || this.props.getIsNotFound !== prevProps.getIsNotFound) {
             this.props.handleCurrentWeather(this.props.getSettings);
             this.props.handleForecastWeather(this.props.getSettings);
             this.props.handleHistoryWeather(this.props.getSettings);
@@ -43,8 +44,6 @@ class WeatherList extends React.Component {
             let currentWeather = getWeather.current
             let nextDay = getWeather.forecast.forecastday
             let lastDay = this.props.getHistoryWeather.forecast.forecastday
-            console.log(lastDay)
-            console.log(nextDay)
 
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
@@ -72,7 +71,11 @@ class WeatherList extends React.Component {
                 </>
             )
         } else {
-            return <Preloader/>
+            if (this.props.getIsNotFound) {
+                return <NothingFound/>
+            } else {
+                return <Preloader/>
+            }
         }
     }
 }
@@ -84,6 +87,7 @@ let mapStateToProps = (state) => {
         getHistoryWeather: state.weather_reducer.historyWeather,
         getSettings: state.weather_reducer.settings,
         getIsLoading: state.weather_reducer.isLoading,
+        getIsNotFound: state.weather_reducer.isNotFound,
         getIsLocationView: state.weather_reducer.isLocationView,
     })
 };
@@ -94,7 +98,8 @@ let resultConnecting = connect(mapStateToProps, {
     handleHistoryWeather,
     setSettings,
     handleCurrentIp,
-    toggleIsLocationView
+    toggleIsLocationView,
+    toggleIsNotFound,
 })(WeatherList);
 
 export default resultConnecting;

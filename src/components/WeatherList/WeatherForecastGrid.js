@@ -11,7 +11,7 @@ export function WeatherForecastGrid(props) {
 
     let nextDayArr = props.nextDay.map((forecastday) => {
         return <div className={s.forecastday__day}
-                    style={temperatureGradient((forecastday.day.maxtemp_c + forecastday.day.mintemp_c) / 2)}>
+                    style={temperatureGradient(forecastday.day.maxtemp_c)}>
             <div><b>{forecastday.date}</b></div>
             <div>{roundFunc(forecastday.day.mintemp_c)}°C ... {roundFunc(forecastday.day.maxtemp_c)}°C</div>
             <div>{forecastday.day.maxwind_mph} m/s

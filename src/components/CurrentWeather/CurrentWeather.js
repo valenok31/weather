@@ -12,6 +12,7 @@ import {
 import LocationOutput from "../LocationOutput/LocationOutput";
 import LocationSearch from "../LocationSearch/LocationSearch";
 import {HeaderContent} from "./CurrentHeaderContent";
+import NothingFound from "../NothingFound/NothingFound";
 
 
 class CurrentWeather extends React.Component {
@@ -58,7 +59,11 @@ class CurrentWeather extends React.Component {
                 </>
             )
         } else {
-            return <Preloader/>
+            if (this.props.getIsNotFound) {
+                return <NothingFound/>
+            } else {
+                return <Preloader/>
+            }
         }
     }
 }
@@ -69,6 +74,7 @@ let mapStateToProps = (state) => {
         getForecastWeather: state.weather_reducer.forecastWeather,
         getSettings: state.weather_reducer.settings,
         getIsLoading: state.weather_reducer.isLoading,
+        getIsNotFound: state.weather_reducer.isNotFound,
         getIsLocationView: state.weather_reducer.isLocationView,
     })
 };
