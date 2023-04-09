@@ -48,6 +48,8 @@ class WeatherList extends React.Component {
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
             //console.log(window)
+
+
             return (<>
                     <div>
                         <div className={s.header__top}>
@@ -59,7 +61,9 @@ class WeatherList extends React.Component {
                                                 currentLocation={currentLocation}
                                                 toggleIsLocationView={this.props.toggleIsLocationView}/>}
                         </div>
-                        <div className={s.table}>
+                        <div className={s.table} onClick={() => {
+                            this.props.toggleIsLocationView(true)
+                        }}>
                             <div className={s.forecastday__box}>
                                 <WeatherHistoryGrid nextDay={lastDay}/>
                                 <WeatherForecastGrid nextDay={nextDay}/>
