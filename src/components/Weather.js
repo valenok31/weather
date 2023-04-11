@@ -29,16 +29,11 @@ class Weather extends React.Component {
 
     render() {
 
-
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
-            let temp = getWeather.current.temp_c;
             let currentLocation = getWeather.location
-            let currentWeather = getWeather.current
-            let nextDay = getWeather.forecast.forecastday
-            let windDegree = currentWeather.wind_degree;
-            let windKph = currentWeather.wind_kph;
-            //console.log(window)
+            let currentWeather = getWeather.current //4
+            let nextDay = getWeather.forecast.forecastday // 1
 
 
             return (<div>
@@ -49,8 +44,6 @@ class Weather extends React.Component {
                                   getSettings={this.props.getSettings}/>
                         <HeaderContent currentWeather={currentWeather}
                                        nextDay={nextDay}
-                                       windDegree={windDegree}
-                                       windKph={windKph}
                                        toggleIsLocationView={this.props.toggleIsLocationView}/>
                     </div>
             )

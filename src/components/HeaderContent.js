@@ -33,7 +33,7 @@ export function HeaderContent(props) {
 
     dayHours(k);
 
-    let tempI = props.nextDay[d].hour[h].temp_c
+    let tempI = props.nextDay[d].hour[h].temp_c;
     tempI = Math.round(tempI);
 
     let windDegree = props.nextDay[d].hour[h].wind_degree
