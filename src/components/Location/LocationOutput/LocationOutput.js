@@ -1,7 +1,7 @@
 import React from "react";
-import iconSearch from "../icons/iconSearch.png";
-import s from "../Weather.module.css";
-import {toggleIsLocationView} from "../../redux/weather_reducer";
+import iconSearch from "../../icons/iconSearch.png";
+import s from "../../Weather.module.css";
+import {toggleIsLocationView} from "../../../redux/weather_reducer";
 
 function LocationOutput(props) {
 

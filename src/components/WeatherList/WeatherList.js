@@ -3,19 +3,18 @@ import {connect} from "react-redux";
 import {
     handleCurrentIp,
     handleCurrentWeather,
-    handleForecastWeather, handleHistoryWeather,
+    handleForecastWeather,
+    handleHistoryWeather,
     setSettings,
-    toggleIsLocationView, toggleIsNotFound
+    toggleIsLocationView,
+    toggleIsNotFound
 } from "../../redux/weather_reducer";
 import s from "./WeatherList.module.css";
-import LocationOutput from "../LocationOutput/LocationOutput";
-import LocationSearch from "../LocationSearch/LocationSearch";
-import {HeaderContent} from "../HeaderContent";
 import Preloader from "../Preloader/Preloader";
 import {WeatherForecastGrid} from "./WeatherForecastGrid";
-import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 import {WeatherHistoryGrid} from "./WeatherHistoryGrid";
 import NothingFound from "../NothingFound/NothingFound";
+import {Location} from "../Location/Location";
 
 class WeatherList extends React.Component {
 
@@ -52,15 +51,11 @@ class WeatherList extends React.Component {
 
             return (<>
                     <div>
-                        <div className={s.header__top}>
-                            {this.props.getIsLocationView ?
-                                <LocationOutput currentLocation={currentLocation}
-                                                toggleIsLocationView={this.props.toggleIsLocationView}/> :
-                                <LocationSearch setSettings={this.props.setSettings}
-                                                getSettings={this.props.getSettings}
-                                                currentLocation={currentLocation}
-                                                toggleIsLocationView={this.props.toggleIsLocationView}/>}
-                        </div>
+                        <Location currentLocation={currentLocation}
+                                  getIsLocationView={this.props.getIsLocationView}
+                                  toggleIsLocationView={this.props.toggleIsLocationView}
+                                  setSettings={this.props.setSettings}
+                                  getSettings={this.props.getSettings}/>
                         <div className={s.table} onClick={() => {
                             this.props.toggleIsLocationView(true)
                         }}>
@@ -68,8 +63,6 @@ class WeatherList extends React.Component {
                                 <WeatherHistoryGrid nextDay={lastDay}/>
                                 <WeatherForecastGrid nextDay={nextDay}/>
                             </div>
-                        </div>
-                        <div>
                         </div>
                     </div>
                 </>

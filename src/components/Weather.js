@@ -9,10 +9,9 @@ import {
 } from "../redux/weather_reducer";
 import {connect} from "react-redux";
 import Preloader from "./Preloader/Preloader";
-import LocationSearch from "./LocationSearch/LocationSearch";
 import {HeaderContent} from "./HeaderContent";
-import LocationOutput from "./LocationOutput/LocationOutput";
 import NothingFound from "./NothingFound/NothingFound";
+import {Location} from "./Location/Location";
 
 class Weather extends React.Component {
 
@@ -42,23 +41,18 @@ class Weather extends React.Component {
             //console.log(window)
 
 
-
-
-            return (<>
-<div>
-                    <div className={s.header__top}>
-                        {this.props.getIsLocationView ?
-                            <LocationOutput currentLocation={currentLocation}
-                                            toggleIsLocationView={this.props.toggleIsLocationView}/> :
-                            <LocationSearch setSettings={this.props.setSettings}
-                                            getSettings={this.props.getSettings}
-                                            currentLocation={currentLocation}
-                                            toggleIsLocationView={this.props.toggleIsLocationView}/>}
+            return (<div>
+                        <Location currentLocation={currentLocation}
+                                  getIsLocationView={this.props.getIsLocationView}
+                                  toggleIsLocationView={this.props.toggleIsLocationView}
+                                  setSettings={this.props.setSettings}
+                                  getSettings={this.props.getSettings}/>
+                        <HeaderContent currentWeather={currentWeather}
+                                       nextDay={nextDay}
+                                       windDegree={windDegree}
+                                       windKph={windKph}
+                                       toggleIsLocationView={this.props.toggleIsLocationView}/>
                     </div>
-                    <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
-                                   windKph={windKph} toggleIsLocationView={this.props.toggleIsLocationView} />
-</div>
-                </>
             )
         } else {
             if (this.props.getIsNotFound) {

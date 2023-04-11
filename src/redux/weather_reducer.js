@@ -1,5 +1,5 @@
 import {fetchIp, fetchWeather} from "../api/api_weather";
-import LocationSearch from "../components/LocationSearch/LocationSearch";
+import LocationSearch from "../components/Location/LocationSearch/LocationSearch";
 
 const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 const SET_FORECAST_WEATHER = 'SET_FORECAST_WEATHER';

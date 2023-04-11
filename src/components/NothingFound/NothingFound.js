@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {setSettings, toggleIsLocationView} from "../../redux/weather_reducer";
 import s from "./NothingFound.module.css";
-import LocationSearch from "../LocationSearch/LocationSearch";
+import LocationSearch from "../Location/LocationSearch/LocationSearch";
 
 class NothingFound extends React.Component {
 

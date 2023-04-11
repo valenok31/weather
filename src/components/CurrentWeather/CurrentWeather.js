@@ -9,10 +9,9 @@ import {
     setSettings,
     toggleIsLocationView
 } from "../../redux/weather_reducer";
-import LocationOutput from "../LocationOutput/LocationOutput";
-import LocationSearch from "../LocationSearch/LocationSearch";
 import {HeaderContent} from "./CurrentHeaderContent";
 import NothingFound from "../NothingFound/NothingFound";
+import {Location} from "../Location/Location";
 
 
 class CurrentWeather extends React.Component {
@@ -44,15 +43,12 @@ class CurrentWeather extends React.Component {
 
             return (<>
                     <div>
-                        <div className={s.header__top}>
-                            {this.props.getIsLocationView ?
-                                <LocationOutput currentLocation={currentLocation}
-                                                toggleIsLocationView={this.props.toggleIsLocationView}/> :
-                                <LocationSearch setSettings={this.props.setSettings}
-                                                getSettings={this.props.getSettings}
-                                                currentLocation={currentLocation}
-                                                toggleIsLocationView={this.props.toggleIsLocationView}/>}
-                        </div>
+                        <Location currentLocation={currentLocation}
+                                  getIsLocationView={this.props.getIsLocationView}
+                                  toggleIsLocationView={this.props.toggleIsLocationView}
+                                  setSettings={this.props.setSettings}
+                                  getSettings={this.props.getSettings}/>
+
                         <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
                                        windKph={windKph}/>
                     </div>
