@@ -1,5 +1,4 @@
 import React from "react";
-import s from './CurrentWeather.module.css'
 import Preloader from "../Preloader/Preloader";
 import {connect} from "react-redux";
 import {
@@ -33,13 +32,11 @@ class CurrentWeather extends React.Component {
     render() {
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
-            let temp = getWeather.current.temp_c;
             let currentLocation = getWeather.location
             let currentWeather = getWeather.current
             let nextDay = getWeather.forecast.forecastday
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
-            //console.log(window)
 
             return (<>
                     <div>

@@ -1,5 +1,4 @@
 import React from "react";
-import s from './Weather.module.css'
 import {
     handleCurrentIp,
     handleCurrentWeather,
