@@ -4,6 +4,7 @@ import React from "react";
 import Weather from "./components/Weather";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import WeatherList from "./components/WeatherList/WeatherList";
+import LocationClass from "./components/Location/LocationClass";
 
 
 let App = () => {
@@ -20,13 +21,20 @@ let App = () => {
                     <li>
                         <Link to="/current">Current</Link>
                     </li>
+                    <li>
+                        <Link to="/setting">Setting</Link>
+                    </li>
                 </ul>
             </nav>
-            <Routes>
-                <Route path='/' element={<Weather stateButton='0'/>}/>
-                <Route path='/weatherlist' element={<WeatherList/>}/>
-                <Route path='/current' element={<CurrentWeather/>}/>
-            </Routes>
+            <div>
+                <LocationClass />
+                <Routes>
+                    <Route path='/' element={<Weather stateButton='0'/>}/>
+                    <Route path='/weatherlist' element={<WeatherList/>}/>
+                    <Route path='/current' element={<CurrentWeather/>}/>
+                </Routes>
+            </div>
+
         </div>
     )
 }

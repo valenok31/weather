@@ -38,24 +38,11 @@ class WeatherList extends React.Component {
 
         if (!!this.props.getCurrentWeather.current && !!this.props.getHistoryWeather.forecast) {
             let getWeather = this.props.getCurrentWeather
-            let temp = getWeather.current.temp_c;
             let currentLocation = getWeather.location
-            let currentWeather = getWeather.current
             let nextDay = getWeather.forecast.forecastday
             let lastDay = this.props.getHistoryWeather.forecast.forecastday
 
-            let windDegree = currentWeather.wind_degree;
-            let windKph = currentWeather.wind_kph;
-            //console.log(window)
-
-
             return (<>
-                    <div>
-                        <Location currentLocation={currentLocation}
-                                  getIsLocationView={this.props.getIsLocationView}
-                                  toggleIsLocationView={this.props.toggleIsLocationView}
-                                  setSettings={this.props.setSettings}
-                                  getSettings={this.props.getSettings}/>
                         <div className={s.table} onClick={() => {
                             this.props.toggleIsLocationView(true)
                         }}>
@@ -64,7 +51,6 @@ class WeatherList extends React.Component {
                                 <WeatherForecastGrid nextDay={nextDay}/>
                             </div>
                         </div>
-                    </div>
                 </>
             )
         } else {

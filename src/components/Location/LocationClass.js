@@ -1,5 +1,7 @@
 import React from "react";
-import Preloader from "../Preloader/Preloader";
+import LocationOutput from "./LocationOutput/LocationOutput";
+import LocationSearch from "./LocationSearch/LocationSearch";
+import s from "./Location.module.css";
 import {connect} from "react-redux";
 import {
     handleCurrentIp,
@@ -8,15 +10,11 @@ import {
     setSettings,
     toggleIsLocationView
 } from "../../redux/weather_reducer";
-import {HeaderContent} from "./CurrentHeaderContent";
-import NothingFound from "../NothingFound/NothingFound";
-import {Location} from "../Location/Location";
 
 
-class CurrentWeather extends React.Component {
+class LocationClass extends React.Component {
 
     componentDidMount() {
-        //this.props.handleCurrentIp();
         this.props.handleCurrentWeather(this.props.getSettings);
         this.props.handleForecastWeather(this.props.getSettings);
     }
@@ -28,30 +26,23 @@ class CurrentWeather extends React.Component {
         }
     }
 
-
     render() {
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
             let currentLocation = getWeather.location
-            let currentWeather = getWeather.current
-            let nextDay = getWeather.forecast.forecastday
-            let windDegree = currentWeather.wind_degree;
-            let windKph = currentWeather.wind_kph;
 
-            return (<>
-                    <div>
-                        <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
-                                       windKph={windKph}/>
-                    </div>
-                </>
-            )
-        } else {
-            if (this.props.getIsNotFound) {
-                return <NothingFound/>
-            } else {
-                return <Preloader/>
-            }
+
+            return <div className={s.header__top}>
+                {this.props.getIsLocationView ?
+                    <LocationOutput currentLocation={currentLocation}
+                                    toggleIsLocationView={this.props.toggleIsLocationView}/> :
+                    <LocationSearch setSettings={this.props.setSettings}
+                                    getSettings={this.props.getSettings}
+                                    currentLocation={currentLocation}
+                                    toggleIsLocationView={this.props.toggleIsLocationView}/>}
+            </div>
         }
+
     }
 }
 
@@ -72,7 +63,6 @@ let resultConnecting = connect(mapStateToProps, {
     setSettings,
     handleCurrentIp,
     toggleIsLocationView
-})(CurrentWeather);
+})(LocationClass);
 
 export default resultConnecting;
-

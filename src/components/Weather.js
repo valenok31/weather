@@ -36,11 +36,6 @@ class Weather extends React.Component {
 
 
             return (<div>
-                        <Location currentLocation={currentLocation}
-                                  getIsLocationView={this.props.getIsLocationView}
-                                  toggleIsLocationView={this.props.toggleIsLocationView}
-                                  setSettings={this.props.setSettings}
-                                  getSettings={this.props.getSettings}/>
                         <HeaderContent currentWeather={currentWeather}
                                        nextDay={nextDay}
                                        toggleIsLocationView={this.props.toggleIsLocationView}/>
@@ -76,4 +71,3 @@ let resultConnecting = connect(mapStateToProps, {
 })(Weather);
 
 export default resultConnecting;
-
