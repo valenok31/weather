@@ -41,8 +41,11 @@ class CurrentWeather extends React.Component {
                     <div onClick={() => {
                         this.props.toggleIsLocationView(true)
                     }}>
-                        <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
-                                       windKph={windKph}/>
+                        <HeaderContent currentWeather={currentWeather}
+                                       nextDay={nextDay}
+                                       windDegree={windDegree}
+                                       windKph={windKph}
+                                       getSettings={this.props.getSettings}/>
                     </div>
                 </>
             )

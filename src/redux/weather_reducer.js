@@ -5,6 +5,7 @@ const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 const SET_FORECAST_WEATHER = 'SET_FORECAST_WEATHER';
 const SET_HISTORY_WEATHER = 'SET_HISTORY_WEATHER';
 const SET_SETTINGS = 'SET_SETTINGS';
+const SET_SETTINGS_WINDVISUALIZATION = 'SET_SETTINGS_WINDVISUALIZATION';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const TOGGLE_IS_NOT_FOUND = 'TOGGLE_IS_NOT_FOUND';
 const TOGGLE_IS_LOCATION_VIEW = 'TOGGLE_IS_LOCATION_VIEW';
@@ -64,6 +65,14 @@ const weather_reducer = (state = initialState, action) => {
                 }
             }
 
+        case SET_SETTINGS_WINDVISUALIZATION:
+            return {
+                ...state,
+                settings: {...state.settings,
+                    windVisualization: action.settings.windVisualization,
+                }
+            }
+
         case TOGGLE_IS_LOADING:
             return {
                 ...state,
@@ -92,6 +101,7 @@ export const setCurrentWeather = (currentWeather) => ({type: SET_CURRENT_WEATHER
 export const setForecastWeather = (forecastWeather) => ({type: SET_FORECAST_WEATHER, forecastWeather});
 export const setHistoryWeather = (historyWeather) => ({type: SET_HISTORY_WEATHER, historyWeather});
 export const setSettings = (settings) => ({type: SET_SETTINGS, settings});
+export const setSettingsWV = (settings) => ({type: SET_SETTINGS_WINDVISUALIZATION, settings});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
 export const toggleIsNotFound = (isNotFound) => ({type: TOGGLE_IS_NOT_FOUND, isNotFound});
 export const toggleIsLocationView = (isLocationView) => ({type: TOGGLE_IS_LOCATION_VIEW, isLocationView});

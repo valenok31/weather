@@ -36,10 +36,11 @@ class Weather extends React.Component {
 
 
             return (<div>
-                        <HeaderContent currentWeather={currentWeather}
-                                       nextDay={nextDay}
-                                       toggleIsLocationView={this.props.toggleIsLocationView}/>
-                    </div>
+                    <HeaderContent currentWeather={currentWeather}
+                                   nextDay={nextDay}
+                                   toggleIsLocationView={this.props.toggleIsLocationView}
+                                   getSettings={this.props.getSettings}/>
+                </div>
             )
         } else {
             if (this.props.getIsNotFound) {

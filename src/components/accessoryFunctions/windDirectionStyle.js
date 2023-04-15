@@ -1,4 +1,5 @@
 export const windDirectionStyle = (windDegree, windKph, x) => {
+    if(windKph===0){windKph=0.0001}
     windKph = 1000 / windKph;
     windDegree = windDegree + 90;
     return {

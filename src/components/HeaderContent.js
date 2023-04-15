@@ -60,7 +60,7 @@ export function HeaderContent(props) {
     }}>
         <div className={s.container}>
             <div className={s.header__content} onWheel={(e) => getOnWheel(e)}>
-                {windVisualization(windDegree, windKph)}
+                {windVisualization(windDegree, windKph, props.getSettings.windVisualization)}
                 <div className={s.content__current_weather}>
                     <div className={s.content__data_current}>
                         {props.nextDay[d].hour[h].time}

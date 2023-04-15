@@ -15,7 +15,7 @@ export function HeaderContent(props) {
     return <div className={s.header} style={temperatureGradient(tempI)}>
         <div className={s.container}>
             <div className={s.header__content}>
-                {windVisualization(windDegree, windKph)}
+                {windVisualization(windDegree, windKph, props.getSettings.windVisualization)}
                 <div className={s.content__current_weather}>
                     <div className={s.content__data_current}>
                         {props.currentWeather.last_updated}
