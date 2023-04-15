@@ -23,6 +23,7 @@ class LocationClass extends React.Component {
         if (this.props.getSettings !== prevProps.getSettings) {
             this.props.handleCurrentWeather(this.props.getSettings);
             this.props.handleForecastWeather(this.props.getSettings);
+
         }
     }
 
@@ -30,7 +31,9 @@ class LocationClass extends React.Component {
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
             let currentLocation = getWeather.location
-            console.log(this.props.getSettings);
+            if(this.props.getSettings.location==='auto:ip'){
+                this.props.setSettings({location: currentLocation.name});
+            }
 // TODO: clickNoLocation
 
             return <div className={s.header__top} id='clickNoLocation'>

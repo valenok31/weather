@@ -30,6 +30,7 @@ const initialState = {
         language: 'ru',
         theme: 'light', //dark
         windVisualization: true,
+        scaleTemperature: 'celsius',
     },
     isLoading: false,
     isNotFound: false,
