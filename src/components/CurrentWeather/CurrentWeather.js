@@ -10,7 +10,6 @@ import {
 } from "../../redux/weather_reducer";
 import {HeaderContent} from "./CurrentHeaderContent";
 import NothingFound from "../NothingFound/NothingFound";
-import {Location} from "../Location/Location";
 
 
 class CurrentWeather extends React.Component {
@@ -39,7 +38,9 @@ class CurrentWeather extends React.Component {
             let windKph = currentWeather.wind_kph;
 
             return (<>
-                    <div>
+                    <div onClick={() => {
+                        this.props.toggleIsLocationView(true)
+                    }}>
                         <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
                                        windKph={windKph}/>
                     </div>

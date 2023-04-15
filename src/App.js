@@ -5,6 +5,7 @@ import Weather from "./components/Weather";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import WeatherList from "./components/WeatherList/WeatherList";
 import LocationClass from "./components/Location/LocationClass";
+import Setting from "./components/Setting/Setting";
 
 
 let App = () => {
@@ -28,10 +29,11 @@ let App = () => {
             </nav>
             <div>
                 <LocationClass />
-                <Routes>
+                <Routes >
                     <Route path='/' element={<Weather stateButton='0'/>}/>
                     <Route path='/weatherlist' element={<WeatherList/>}/>
                     <Route path='/current' element={<CurrentWeather/>}/>
+                    <Route path='/setting' element={<Setting/>}/>
                 </Routes>
             </div>
 

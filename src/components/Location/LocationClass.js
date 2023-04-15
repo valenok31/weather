@@ -30,9 +30,10 @@ class LocationClass extends React.Component {
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
             let currentLocation = getWeather.location
+            console.log(this.props.getSettings);
+// TODO: clickNoLocation
 
-
-            return <div className={s.header__top}>
+            return <div className={s.header__top} id='clickNoLocation'>
                 {this.props.getIsLocationView ?
                     <LocationOutput currentLocation={currentLocation}
                                     toggleIsLocationView={this.props.toggleIsLocationView}/> :

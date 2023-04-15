@@ -27,7 +27,9 @@ const initialState = {
     isLocationView: true,
     settings: {
         location: 'auto:ip',
-        //location: 'Tokyo',
+        language: 'ru',
+        theme: 'light', //dark
+        windVisualization: true,
     },
     isLoading: false,
     isNotFound: false,
@@ -35,17 +37,18 @@ const initialState = {
 
 const weather_reducer = (state = initialState, action) => {
     switch (action.type) {
-
         case SET_CURRENT_WEATHER:
             return {
                 ...state,
                 currentWeather: action.currentWeather
             }
+
         case SET_FORECAST_WEATHER:
             return {
                 ...state,
                 forecastWeather: action.forecastWeather
             }
+
         case SET_HISTORY_WEATHER:
             return {
                 ...state,
@@ -55,7 +58,9 @@ const weather_reducer = (state = initialState, action) => {
         case SET_SETTINGS:
             return {
                 ...state,
-                settings: action.settings,
+                settings: {...state.settings,
+                    location: action.settings.location,
+                }
             }
 
         case TOGGLE_IS_LOADING:

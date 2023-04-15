@@ -14,7 +14,6 @@ import Preloader from "../Preloader/Preloader";
 import {WeatherForecastGrid} from "./WeatherForecastGrid";
 import {WeatherHistoryGrid} from "./WeatherHistoryGrid";
 import NothingFound from "../NothingFound/NothingFound";
-import {Location} from "../Location/Location";
 
 class WeatherList extends React.Component {
 
