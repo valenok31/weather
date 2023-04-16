@@ -6,6 +6,9 @@ const SET_FORECAST_WEATHER = 'SET_FORECAST_WEATHER';
 const SET_HISTORY_WEATHER = 'SET_HISTORY_WEATHER';
 const SET_SETTINGS = 'SET_SETTINGS';
 const SET_SETTINGS_WINDVISUALIZATION = 'SET_SETTINGS_WINDVISUALIZATION';
+const SET_SETTINGS_SCALETEMPERATURE = 'SET_SETTINGS_SCALETEMPERATURE';
+const SET_SETTINGS_THEME = 'SET_SETTINGS_THEME';
+const SET_SETTINGS_LANGUAGE = 'SET_SETTINGS_LANGUAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const TOGGLE_IS_NOT_FOUND = 'TOGGLE_IS_NOT_FOUND';
 const TOGGLE_IS_LOCATION_VIEW = 'TOGGLE_IS_LOCATION_VIEW';
@@ -29,9 +32,9 @@ const initialState = {
     settings: {
         location: 'auto:ip',
         language: 'ru',
-        theme: 'light', //dark
+        theme: true, //dark
         windVisualization: true,
-        scaleTemperature: 'celsius',
+        scaleTemperature: true,
     },
     isLoading: false,
     isNotFound: false,
@@ -73,6 +76,30 @@ const weather_reducer = (state = initialState, action) => {
                 }
             }
 
+        case SET_SETTINGS_SCALETEMPERATURE:
+            return {
+                ...state,
+                settings: {...state.settings,
+                    scaleTemperature: action.settings.scaleTemperature,
+                }
+            }
+
+        case SET_SETTINGS_THEME:
+            return {
+                ...state,
+                settings: {...state.settings,
+                    theme: action.settings.theme,
+                }
+            }
+
+        case SET_SETTINGS_LANGUAGE:
+            return {
+                ...state,
+                settings: {...state.settings,
+                    language: action.settings.language,
+                }
+            }
+
         case TOGGLE_IS_LOADING:
             return {
                 ...state,
@@ -102,6 +129,9 @@ export const setForecastWeather = (forecastWeather) => ({type: SET_FORECAST_WEAT
 export const setHistoryWeather = (historyWeather) => ({type: SET_HISTORY_WEATHER, historyWeather});
 export const setSettings = (settings) => ({type: SET_SETTINGS, settings});
 export const setSettingsWV = (settings) => ({type: SET_SETTINGS_WINDVISUALIZATION, settings});
+export const setSettingsScaleTemperature = (settings) => ({type: SET_SETTINGS_SCALETEMPERATURE, settings});
+export const setSettingsTheme = (settings) => ({type: SET_SETTINGS_THEME, settings});
+export const setSettingsLanguage = (settings) => ({type: SET_SETTINGS_LANGUAGE, settings});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
 export const toggleIsNotFound = (isNotFound) => ({type: TOGGLE_IS_NOT_FOUND, isNotFound});
 export const toggleIsLocationView = (isLocationView) => ({type: TOGGLE_IS_LOCATION_VIEW, isLocationView});

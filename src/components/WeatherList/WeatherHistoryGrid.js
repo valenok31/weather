@@ -5,15 +5,18 @@ import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 
 export function WeatherHistoryGrid(props) {
     function roundFunc(numbers) {
-
-        return (numbers > 0 ? '+' : '') + Math.round(numbers);
+        if(!props.getSettings.scaleTemperature){
+            numbers = numbers*9/5+32;
+            return (numbers > 0 ? '+' : '') + Math.round(numbers)+'°F';
+        }
+        return (numbers > 0 ? '+' : '') + Math.round(numbers)+'°C';
     }
 
     let nextDayArr = props.nextDay.map((forecastday) => {
         return <div className={s.forecastday__day}
                     style={temperatureGradient(forecastday.day.maxtemp_c)}>
             <div><b>{forecastday.date}</b></div>
-            <div>{roundFunc(forecastday.day.mintemp_c)}°C ... {roundFunc(forecastday.day.maxtemp_c)}°C</div>
+            <div>{roundFunc(forecastday.day.mintemp_c)} ... {roundFunc(forecastday.day.maxtemp_c)}</div>
             <div>{forecastday.day.maxwind_mph} m/s
                 <div className={s.img_direction__circle}>
                     <img src={direction} className={s.img__direction}

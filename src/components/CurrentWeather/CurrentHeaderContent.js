@@ -7,12 +7,16 @@ import direction from "../icons/direction.png";
 export function HeaderContent(props) {
 
     let tempI = props.currentWeather.temp_c
-    tempI = Math.round(tempI);
+    tempI = Math.round(tempI)+'°';
+    if(!props.getSettings.scaleTemperature){
+        tempI = props.currentWeather.temp_f
+        tempI = Math.round(tempI)+'°F';
+    }
 
     let windDegree = props.currentWeather.wind_degree
     let windKph = props.currentWeather.wind_mph;
 
-    return <div className={s.header} style={temperatureGradient(tempI)}>
+    return <div className={s.header} style={temperatureGradient(props.currentWeather.temp_c)}>
         <div className={s.container}>
             <div className={s.header__content}>
                 {windVisualization(windDegree, windKph, props.getSettings.windVisualization)}
@@ -22,7 +26,7 @@ export function HeaderContent(props) {
                         <img src={props.currentWeather.condition.icon} alt={props.currentWeather.condition.text}/>
                     </div>
                     <div className={s.content__temp_current}>
-                        {tempI > 0 ? '+' : ''}{tempI}°
+                        {tempI > 0 ? '+' : ''}{tempI}
                     </div>
                     <div className={s.content__details_current}>
                         <div className={s.details_current__parameter}>Pressure:</div>

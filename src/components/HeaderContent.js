@@ -3,6 +3,9 @@ import s from "./Weather.module.css";
 import {windVisualization} from "./accessoryFunctions/windVisualization";
 import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
 import direction from "./icons/direction.png";
+// TODO: localization L10N
+import {l10n} from "./accessoryFunctions/localization"
+
 
 let d = 0;
 let h = 0;
@@ -34,7 +37,12 @@ export function HeaderContent(props) {
     dayHours(k);
 
     let tempI = props.nextDay[d].hour[h].temp_c;
-    tempI = Math.round(tempI);
+    tempI = Math.round(tempI)+'°';
+    if(!props.getSettings.scaleTemperature){
+        tempI = props.nextDay[d].hour[h].temp_f;
+        tempI = Math.round(tempI)+'°F';
+    }
+
 
     let windDegree = props.nextDay[d].hour[h].wind_degree
     let windKph = props.nextDay[d].hour[h].wind_mph;
@@ -55,7 +63,8 @@ export function HeaderContent(props) {
         props.toggleIsLocationView(true);
     }
 
-    return <div className={s.header} style={temperatureGradient(tempI)} onClick={() => {
+
+    return <div className={s.header} style={temperatureGradient(props.nextDay[d].hour[h].temp_c)} onClick={() => {
         isLocationView();
     }}>
         <div className={s.container}>
@@ -67,17 +76,17 @@ export function HeaderContent(props) {
                         <img src={props.nextDay[d].hour[h].condition.icon} alt={props.nextDay[d].hour[h].condition.text}/>
                     </div>
                     <div className={s.content__temp_current}>
-                        {tempI > 0 ? '+' : ''}{tempI}°
+                        {tempI > 0 ? '+' : ''}{tempI}
                     </div>
                     <div className={s.content__details_current}>
-                        <div className={s.details_current__parameter}>Pressure:</div>
+                        <div className={s.details_current__parameter}>{l10n['pressure'][props.getSettings.language]}:</div>
                         <div className={s.details_current__value}>
                             {Math.round(props.nextDay[d].hour[h].pressure_mb * 0.750064)} mmHg
                         </div>
-                        <div className={s.details_current__parameter}>Humidity:</div>
+                        <div className={s.details_current__parameter}>{l10n['humidity'][props.getSettings.language]}:</div>
                         <div className={s.details_current__value}>{Math.round(props.nextDay[d].hour[h].humidity)}%
                         </div>
-                        <div className={s.details_current__parameter}>Wind:</div>
+                        <div className={s.details_current__parameter}>{l10n['wind'][props.getSettings.language]}:</div>
                         <div
                             className={s.details_current__value}>{Math.round(props.nextDay[d].hour[h].wind_mph * 10 / 3.6) / 10} m/s
                             {/*({props.nextDay[d].hour[h].wind_dir})*/}

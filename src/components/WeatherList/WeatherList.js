@@ -42,14 +42,14 @@ class WeatherList extends React.Component {
             let lastDay = this.props.getHistoryWeather.forecast.forecastday
 
             return (<>
-                        <div className={s.table} onClick={() => {
-                            this.props.toggleIsLocationView(true)
-                        }}>
-                            <div className={s.forecastday__box}>
-                                <WeatherHistoryGrid nextDay={lastDay}/>
-                                <WeatherForecastGrid nextDay={nextDay}/>
-                            </div>
+                    <div className={s.table} onClick={() => {
+                        this.props.toggleIsLocationView(true)
+                    }}>
+                        <div className={s.forecastday__box}>
+                            <WeatherHistoryGrid nextDay={lastDay} getSettings={this.props.getSettings}/>
+                            <WeatherForecastGrid nextDay={nextDay} getSettings={this.props.getSettings}/>
                         </div>
+                    </div>
                 </>
             )
         } else {
