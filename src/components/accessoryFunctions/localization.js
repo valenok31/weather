@@ -1,7 +1,9 @@
 export const l10n = {
     'pressure': {en: 'Pressure', ru: 'Давление', zh: '压力', es: 'Presión'},
+    'mmHg': {en: 'mmHg', ru: 'мм рт. ст.', zh: 'mmHg', es: 'mmHg'},
     'humidity': {en: 'Humidity', ru: 'Влажность', zh: '湿度', es: 'Humedad'},
     'wind': {en: 'Wind', ru: 'Ветер', zh: '风', es: 'Viento'},
+    'm/s': {en: 'm/s', ru: 'м/с', zh: 'm/s', es: 'm/s'},
     'location': {en: 'Location', ru: 'Локация', zh: '地点', es: 'Ubicación'},
     'language': {en: 'Language', ru: 'Язык', zh: '语言', es: 'Idioma'},
     'theme': {en: 'Theme', ru: 'Тема', zh: '主题', es: 'Temático'},

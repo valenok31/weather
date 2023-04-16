@@ -47,6 +47,8 @@ export function HeaderContent(props) {
     let windDegree = props.nextDay[d].hour[h].wind_degree
     let windKph = props.nextDay[d].hour[h].wind_mph;
 
+    let lang=props.getSettings.language;
+
     function getOnWheel(e) {
         if (e.deltaY < initializeK) {
             if (k < initializeK) valueChange(initializeK)
@@ -79,16 +81,16 @@ export function HeaderContent(props) {
                         {tempI > 0 ? '+' : ''}{tempI}
                     </div>
                     <div className={s.content__details_current}>
-                        <div className={s.details_current__parameter}>{l10n['pressure'][props.getSettings.language]}:</div>
+                        <div className={s.details_current__parameter}>{l10n['pressure'][lang]}:</div>
                         <div className={s.details_current__value}>
-                            {Math.round(props.nextDay[d].hour[h].pressure_mb * 0.750064)} mmHg
+                            {Math.round(props.nextDay[d].hour[h].pressure_mb * 0.750064)} {l10n['mmHg'][lang]}
                         </div>
-                        <div className={s.details_current__parameter}>{l10n['humidity'][props.getSettings.language]}:</div>
+                        <div className={s.details_current__parameter}>{l10n['humidity'][lang]}:</div>
                         <div className={s.details_current__value}>{Math.round(props.nextDay[d].hour[h].humidity)}%
                         </div>
-                        <div className={s.details_current__parameter}>{l10n['wind'][props.getSettings.language]}:</div>
+                        <div className={s.details_current__parameter}>{l10n['wind'][lang]}:</div>
                         <div
-                            className={s.details_current__value}>{Math.round(props.nextDay[d].hour[h].wind_mph * 10 / 3.6) / 10} m/s
+                            className={s.details_current__value}>{Math.round(props.nextDay[d].hour[h].wind_mph * 10 / 3.6) / 10} {l10n['m/s'][lang]}
                             {/*({props.nextDay[d].hour[h].wind_dir})*/}
                             <div className={s.img_direction__circle}>
                                 <img src={direction} className={s.img__direction}

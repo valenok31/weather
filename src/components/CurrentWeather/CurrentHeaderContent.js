@@ -1,20 +1,24 @@
-import React, {useState} from "react";
+import React from "react";
 import s from "../Weather.module.css";
 import {windVisualization} from "../accessoryFunctions/windVisualization";
 import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 import direction from "../icons/direction.png";
+// TODO: localization L10N
+import {l10n} from "../accessoryFunctions/localization"
+
 
 export function HeaderContent(props) {
 
     let tempI = props.currentWeather.temp_c
-    tempI = Math.round(tempI)+'°';
-    if(!props.getSettings.scaleTemperature){
+    tempI = Math.round(tempI) + '°';
+    if (!props.getSettings.scaleTemperature) {
         tempI = props.currentWeather.temp_f
-        tempI = Math.round(tempI)+'°F';
+        tempI = Math.round(tempI) + '°F';
     }
 
     let windDegree = props.currentWeather.wind_degree
     let windKph = props.currentWeather.wind_mph;
+    let lang = props.getSettings.language;
 
     return <div className={s.header} style={temperatureGradient(props.currentWeather.temp_c)}>
         <div className={s.container}>
@@ -29,16 +33,16 @@ export function HeaderContent(props) {
                         {tempI > 0 ? '+' : ''}{tempI}
                     </div>
                     <div className={s.content__details_current}>
-                        <div className={s.details_current__parameter}>Pressure:</div>
+                        <div className={s.details_current__parameter}>{l10n['pressure'][lang]}:</div>
                         <div className={s.details_current__value}>
-                            {Math.round(props.currentWeather.pressure_mb * 0.750064)} mmHg
+                            {Math.round(props.currentWeather.pressure_mb * 0.750064)} {l10n['mmHg'][lang]}
                         </div>
-                        <div className={s.details_current__parameter}>Humidity:</div>
+                        <div className={s.details_current__parameter}>{l10n['humidity'][lang]}:</div>
                         <div className={s.details_current__value}>{Math.round(props.currentWeather.humidity)}%
                         </div>
-                        <div className={s.details_current__parameter}>Wind:</div>
+                        <div className={s.details_current__parameter}>{l10n['wind'][lang]}:</div>
                         <div
-                            className={s.details_current__value}>{Math.round(windKph * 10 / 3.6) / 10} m/s
+                            className={s.details_current__value}>{Math.round(windKph * 10 / 3.6) / 10} {l10n['m/s'][lang]}
                             <div className={s.img_direction__circle}>
                                 <img src={direction} className={s.img__direction}
                                      style={{transform: `rotate(${props.currentWeather.wind_degree + 180}deg)`}}/>
