@@ -10,4 +10,24 @@ export const l10n = {
     'windVisualization': {en: 'Wind animation', ru: 'Анимация ветра', zh: '风动画', es: 'Animación de viento'},
     'scaleTemperature': {en: 'Temperature scale', ru: 'Температурная шкала', zh: '温度刻度', es: 'Escala de temperatura'},
     'submit': {en: 'submit', ru: 'применить', zh: '申请', es: 'presentar'},
+    'on': {en: 'on', ru: 'вкл', zh: '上', es: 'incl'},
+    'off': {en: 'off', ru: 'выкл', zh: '关闭', es: 'apagado'},
+    'weekLocFull': {
+        en: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+        ru: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+        zh: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        es: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    },
+    'weekLoc': {
+        en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        ru: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+        zh: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        es: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    },
+    'monthLoc': {
+        en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        ru: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
+        zh: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        es: ['Enero', "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+    }
 }

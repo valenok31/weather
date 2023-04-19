@@ -5,6 +5,7 @@ import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 import direction from "../icons/direction.png";
 // TODO: localization L10N
 import {l10n} from "../accessoryFunctions/localization"
+import {dateConverter} from "../accessoryFunctions/dateСonverter";
 
 
 export function HeaderContent(props) {
@@ -26,7 +27,7 @@ export function HeaderContent(props) {
                 {windVisualization(windDegree, windKph, props.getSettings.windVisualization)}
                 <div className={s.content__current_weather}>
                     <div className={s.content__data_current}>
-                        {props.currentWeather.last_updated}
+                        {dateConverter(props.currentWeather.last_updated,true, lang)}
                         <img src={props.currentWeather.condition.icon} alt={props.currentWeather.condition.text}/>
                     </div>
                     <div className={s.content__temp_current}>

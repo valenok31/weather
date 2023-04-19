@@ -5,6 +5,7 @@ import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
 import direction from "./icons/direction.png";
 // TODO: localization L10N
 import {l10n} from "./accessoryFunctions/localization"
+import {dateConverter} from "./accessoryFunctions/dateСonverter";
 
 
 let d = 0;
@@ -66,6 +67,8 @@ export function HeaderContent(props) {
     }
 
 
+
+
     return <div className={s.header} style={temperatureGradient(props.nextDay[d].hour[h].temp_c)} onClick={() => {
         isLocationView();
     }}>
@@ -74,7 +77,7 @@ export function HeaderContent(props) {
                 {windVisualization(windDegree, windKph, props.getSettings.windVisualization)}
                 <div className={s.content__current_weather}>
                     <div className={s.content__data_current}>
-                        {props.nextDay[d].hour[h].time}
+                        {dateConverter(props.nextDay[d].hour[h].time,true,lang)}
                         <img src={props.nextDay[d].hour[h].condition.icon} alt={props.nextDay[d].hour[h].condition.text}/>
                     </div>
                     <div className={s.content__temp_current}>

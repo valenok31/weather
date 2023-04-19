@@ -6,7 +6,8 @@ import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import WeatherList from "./components/WeatherList/WeatherList";
 import LocationClass from "./components/Location/LocationClass";
 import Setting from "./components/Setting/Setting";
-
+// TODO: localization L10N
+import {l10n} from "./components/accessoryFunctions/localization"
 
 let App = () => {
 
