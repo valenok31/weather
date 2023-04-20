@@ -29,5 +29,11 @@ export const l10n = {
         ru: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
         zh: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
         es: ['Enero', "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-    }
+    },
+    'Forecast for 3 days (hourly)': {en: 'Forecast for 3 days (hourly)', ru: 'Прогноз на 3 дня (почасовой)', zh: '预测3天(每小时)', es: 'Pronóstico para 3 días (por hora)'},
+    'Forecast for 3 days (list)': {en: 'Forecast for 3 days (list)', ru: 'Прогноз на 3 дня (список)', zh: '预测3天(列表)', es: 'Pronóstico para 3 días (lista)'},
+    'Current': {en: 'Current weather', ru: 'Текущая погода', zh: '现时天气', es: 'Tiempo actual'},
+    'Setting': {en: 'Setting', ru: 'Настройки', zh: '设置', es: 'Configuración'},
+
+
 }

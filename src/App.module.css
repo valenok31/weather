@@ -1,13 +1,18 @@
 .app__header {
-  display: grid;
+/*  display: grid;
   grid-template-columns: 200px auto;
-  height: 100vh;
+  height: 100vh;*/
 }
 
 .App-link {
   color: #61dafb;
 }
 
+nav{
+  /*background-color: antiquewhite;*/
+  position: absolute;
+  z-index: 999;
+}
 li{
   display: flex;
   width: 100px;
