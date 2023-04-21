@@ -39,7 +39,9 @@ class LocationClass extends React.Component {
             return <div className={s.header__top} id='clickNoLocation'>
                 {this.props.getIsLocationView ?
                     <LocationOutput currentLocation={currentLocation}
-                                    toggleIsLocationView={this.props.toggleIsLocationView}/> :
+                                    toggleIsLocationView={this.props.toggleIsLocationView}
+                                    setSettings={this.props.setSettings}
+                                    getSettings={this.props.getSettings}/> :
                     <LocationSearch setSettings={this.props.setSettings}
                                     getSettings={this.props.getSettings}
                                     currentLocation={currentLocation}

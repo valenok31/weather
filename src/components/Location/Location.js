@@ -7,7 +7,8 @@ export function Location(props) {
     return <div className={s.header__top}>
         {props.getIsLocationView ?
             <LocationOutput currentLocation={props.currentLocation}
-                            toggleIsLocationView={props.toggleIsLocationView}/> :
+                            toggleIsLocationView={props.toggleIsLocationView}
+                            setSettings={props.setSettings}/> :
             <LocationSearch setSettings={props.setSettings}
                             getSettings={props.getSettings}
                             currentLocation={props.currentLocation}
