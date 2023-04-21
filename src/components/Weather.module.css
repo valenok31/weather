@@ -69,8 +69,8 @@
     font-size: 20px;
     width: auto;
     grid-template-areas:
-    "A A A A A"
-    "B B C C C";
+    "A A A A A A"
+    "B B D C C C";
     z-index: 99;
 }
 .content__data_current{
@@ -83,7 +83,6 @@
     text-align: center;
     font-size: 120px;
     grid-area: B;
-
 }
 .content__details_current{
     display:grid;
@@ -94,6 +93,19 @@
     justify-items: start;
     grid-area: C;
 }
+
+.content__condition{
+    text-align: center;
+    font-size: 50px;
+    grid-area: D;
+    display: flex;
+    margin: auto;
+}
+.content__condition img{
+
+}
+
+
 
 .details_current__parameter{
 display: inline;

@@ -10,17 +10,17 @@ import {dateConverter} from "./accessoryFunctions/dateСonverter";
 
 let d = 0;
 let h = 0;
-let initializeK= 0;
+let initializeK = 0;
 
 
 function dayHours(k) {
     if (k <= 71) {
         d = 2;
-        h = k-48;
+        h = k - 48;
     }
     if (k <= 47) {
         d = 1;
-        h = k-24;
+        h = k - 24;
     }
     if (k <= 23) {
         d = 0;
@@ -38,17 +38,17 @@ export function HeaderContent(props) {
     dayHours(k);
 
     let tempI = props.nextDay[d].hour[h].temp_c;
-    tempI = Math.round(tempI)+'°';
-    if(!props.getSettings.scaleTemperature){
+    tempI = Math.round(tempI) + '°';
+    if (!props.getSettings.scaleTemperature) {
         tempI = props.nextDay[d].hour[h].temp_f;
-        tempI = Math.round(tempI)+'°F';
+        tempI = Math.round(tempI) + '°F';
     }
 
 
     let windDegree = props.nextDay[d].hour[h].wind_degree
     let windKph = props.nextDay[d].hour[h].wind_mph;
 
-    let lang=props.getSettings.language;
+    let lang = props.getSettings.language;
 
     function getOnWheel(e) {
         if (e.deltaY < initializeK) {
@@ -67,8 +67,6 @@ export function HeaderContent(props) {
     }
 
 
-
-
     return <div className={s.header} style={temperatureGradient(props.nextDay[d].hour[h].temp_c)} onClick={() => {
         isLocationView();
     }}>
@@ -77,8 +75,7 @@ export function HeaderContent(props) {
                 {windVisualization(windDegree, windKph, props.getSettings.windVisualization)}
                 <div className={s.content__current_weather}>
                     <div className={s.content__data_current}>
-                        {dateConverter(props.nextDay[d].hour[h].time,true,lang)}
-                        <img src={props.nextDay[d].hour[h].condition.icon} alt={props.nextDay[d].hour[h].condition.text}/>
+                        {dateConverter(props.nextDay[d].hour[h].time, true, lang)}
                     </div>
                     <div className={s.content__temp_current}>
                         {tempI > 0 ? '+' : ''}{tempI}
@@ -100,6 +97,10 @@ export function HeaderContent(props) {
                                      style={{transform: `rotate(${props.nextDay[d].hour[h].wind_degree + 180}deg)`}}/>
                             </div>
                         </div>
+                    </div>
+                    <div className={s.content__condition}>
+                        <img src={props.nextDay[d].hour[h].condition.icon}
+                             alt={props.nextDay[d].hour[h].condition.text}/>
                     </div>
                 </div>
             </div>

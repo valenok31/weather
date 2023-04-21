@@ -1,20 +1,21 @@
-.header__top {
+/*.header__top {
     position: absolute;
     width: calc(100% - 200px);
     min-height: 50px;
     text-align: center;
-    /*padding: 20px;*/
+    !*padding: 20px;*!
     z-index: 199;
-}
+}*/
 
 .table {
     display: flex;
-    height: calc(100% - 20px);
-    margin-top: 20px;
+    height: calc(100% - 0px);
+    margin-top: 0px;
 }
 
 .forecastday__box {
     margin: auto;
+    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3px;
