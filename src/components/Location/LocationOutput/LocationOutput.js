@@ -2,6 +2,7 @@ import React from "react";
 import iconSearch from "../../icons/iconSearch.png";
 import target from "../../icons/target.png";
 import s from "../../Weather.module.css";
+import {handleCurrentIp} from "../../../redux/weather_reducer";
 
 function LocationOutput(props) {
 
@@ -10,9 +11,7 @@ function LocationOutput(props) {
     }
 
         function isSetSettings() {
-        // TODO: Where am I?
-        props.setSettings({location: 'auto:ip'});
-            console.log(props.getSettings.location)
+            props.handleCurrentIp();
     }
 
 

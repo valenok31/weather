@@ -31,7 +31,7 @@ class LocationClass extends React.Component {
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
             let currentLocation = getWeather.location
-            if(this.props.getSettings.location==='auto:ip'){
+            if (this.props.getSettings.location === 'auto:ip') {
                 this.props.setSettings({location: currentLocation.name});
             }
 // TODO: clickNoLocation
@@ -40,6 +40,7 @@ class LocationClass extends React.Component {
                 {this.props.getIsLocationView ?
                     <LocationOutput currentLocation={currentLocation}
                                     toggleIsLocationView={this.props.toggleIsLocationView}
+                                    handleCurrentIp={this.props.handleCurrentIp}
                                     setSettings={this.props.setSettings}
                                     getSettings={this.props.getSettings}/> :
                     <LocationSearch setSettings={this.props.setSettings}
@@ -68,7 +69,7 @@ let resultConnecting = connect(mapStateToProps, {
     handleForecastWeather,
     setSettings,
     handleCurrentIp,
-    toggleIsLocationView
+    toggleIsLocationView,
 })(LocationClass);
 
 export default resultConnecting;
