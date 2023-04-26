@@ -1,5 +1,5 @@
 import s from './App.module.css'
-import {Routes, Route, Link, NavLink, withRouter} from 'react-router-dom';
+import {Link, Route, Routes} from 'react-router-dom';
 import React from "react";
 import Weather from "./components/Weather";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";

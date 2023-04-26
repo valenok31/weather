@@ -17,7 +17,7 @@
 
 ## Основные моменты BLL
 
-В version 1.0 реализовано:
+В version 1.0:
 1. redux
 2. redux-thunk
 3. react-redux
