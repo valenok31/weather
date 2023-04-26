@@ -10,7 +10,6 @@ import {connect} from "react-redux";
 import Preloader from "./Preloader/Preloader";
 import {HeaderContent} from "./HeaderContent";
 import NothingFound from "./NothingFound/NothingFound";
-import {Location} from "./Location/Location";
 
 class Weather extends React.Component {
 
@@ -30,10 +29,8 @@ class Weather extends React.Component {
 
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
-            let currentLocation = getWeather.location
-            let currentWeather = getWeather.current //4
-            let nextDay = getWeather.forecast.forecastday // 1
-
+            let currentWeather = getWeather.current
+            let nextDay = getWeather.forecast.forecastday
 
             return (<div>
                     <HeaderContent currentWeather={currentWeather}

@@ -6,28 +6,9 @@ import direction from "./icons/direction.png";
 // TODO: localization L10N
 import {l10n} from "./accessoryFunctions/localization"
 import {dateConverter} from "./accessoryFunctions/dateСonverter";
+import {dayHours} from "./accessoryFunctions/dayHours";
 
-
-let d = 0;
-let h = 0;
 let initializeK = 0;
-
-
-function dayHours(k) {
-    if (k <= 71) {
-        d = 2;
-        h = k - 48;
-    }
-    if (k <= 47) {
-        d = 1;
-        h = k - 24;
-    }
-    if (k <= 23) {
-        d = 0;
-        h = k;
-    }
-}
-
 
 export function HeaderContent(props) {
     let date = new Date(props.currentWeather.last_updated);
@@ -35,7 +16,8 @@ export function HeaderContent(props) {
 
     const [k, valueChange] = useState(initializeK);
 
-    dayHours(k);
+    let d = dayHours(k).d;
+    let h = dayHours(k).h;
 
     let tempI = props.nextDay[d].hour[h].temp_c;
     tempI = Math.round(tempI) + '°';
