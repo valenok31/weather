@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
     handleCurrentIp,
     handleCurrentWeather,
@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import Preloader from "./Preloader/Preloader";
 import {HeaderContent} from "./HeaderContent";
 import NothingFound from "./NothingFound/NothingFound";
+
 
 class Weather extends React.Component {
 
@@ -31,6 +32,8 @@ class Weather extends React.Component {
             let getWeather = this.props.getCurrentWeather
             let currentWeather = getWeather.current
             let nextDay = getWeather.forecast.forecastday
+
+
 
             return (<div>
                     <HeaderContent currentWeather={currentWeather}
