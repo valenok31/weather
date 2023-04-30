@@ -1,7 +1,7 @@
 import s from './App.module.css'
 import {Link, Route, Routes} from 'react-router-dom';
 import React from "react";
-import Weather from "./components/Weather";
+import Weather from "./components/Weather/Weather";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import WeatherList from "./components/WeatherList/WeatherList";
 import LocationClass from "./components/Location/LocationClass";
@@ -13,8 +13,6 @@ import {compose} from "redux";
 
 
 class App extends React.Component {
-
-
 
     render() {
 

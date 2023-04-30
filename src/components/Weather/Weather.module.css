@@ -28,7 +28,7 @@
     height: 2000%;
     top: -1000%;
     left: -1000%;
-    background: url(../assistive/snowForBackground_4.png) 0 0 repeat;
+    background: url(../../assistive/snowForBackground_4.png) 0 0 repeat;
     opacity: 0.3;
     animation: scroll linear 10s infinite;
 }

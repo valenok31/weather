@@ -1,4 +1,4 @@
-import s from "../Weather.module.css";
+import s from "../Weather/Weather.module.css";
 import {windDirectionStyle} from "./windDirectionStyle";
 import React from "react";
 

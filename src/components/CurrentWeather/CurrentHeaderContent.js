@@ -1,5 +1,5 @@
 import React from "react";
-import s from "../Weather.module.css";
+import s from "../Weather/Weather.module.css";
 import {windVisualization} from "../accessoryFunctions/windVisualization";
 import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 import direction from "../icons/direction.png";

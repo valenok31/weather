@@ -5,11 +5,11 @@ import {
     handleForecastWeather,
     setSettings,
     toggleIsLocationView
-} from "../redux/weather_reducer";
+} from "../../redux/weather_reducer";
 import {connect} from "react-redux";
-import Preloader from "./Preloader/Preloader";
+import Preloader from "../Preloader/Preloader";
 import {HeaderContent} from "./HeaderContent";
-import NothingFound from "./NothingFound/NothingFound";
+import NothingFound from "../NothingFound/NothingFound";
 
 
 class Weather extends React.Component {

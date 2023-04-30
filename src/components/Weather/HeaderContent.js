@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import s from "./Weather.module.css";
-import {windVisualization} from "./accessoryFunctions/windVisualization";
-import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
-import direction from "./icons/direction.png";
+import {windVisualization} from "../accessoryFunctions/windVisualization";
+import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
+import direction from "../icons/direction.png";
 // TODO: localization L10N
-import {l10n} from "./accessoryFunctions/localization"
-import {dateConverter} from "./accessoryFunctions/dateСonverter";
-import {dayHours} from "./accessoryFunctions/dayHours";
+import {l10n} from "../accessoryFunctions/localization"
+import {dateConverter} from "../accessoryFunctions/dateСonverter";
+import {dayHours} from "../accessoryFunctions/dayHours";
 
 let initializeK = 0;
 
