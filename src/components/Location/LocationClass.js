@@ -29,8 +29,8 @@ class LocationClass extends React.Component {
 
     render() {
         if (!!this.props.getCurrentWeather.current) {
-            let getWeather = this.props.getCurrentWeather
-            let currentLocation = getWeather.location
+            let getWeather = this.props.getCurrentWeather;
+            let currentLocation = getWeather.location;
             if (this.props.getSettings.location === 'auto:ip') {
                 this.props.setSettings({location: currentLocation.name});
             }

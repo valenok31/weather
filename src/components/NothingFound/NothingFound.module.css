@@ -1,10 +1,16 @@
 .header__top {
-    position: absolute;
+    /*position: absolute;*/
     width: calc(100% - 200px);
     min-height: 50px;
     text-align: center;
     /*padding: 20px;*/
     z-index: 199;
+}
+.iconSearch{
+    display: inline;
+    width:15px;
+    height:15px;
+    cursor: pointer;
 }
 
 .table {

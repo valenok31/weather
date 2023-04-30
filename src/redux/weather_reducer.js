@@ -63,7 +63,8 @@ const weather_reducer = (state = initialState, action) => {
         case SET_SETTINGS:
             return {
                 ...state,
-                settings: {...state.settings,
+                settings: {
+                    ...state.settings,
                     location: action.settings.location,
                 }
             }
@@ -71,7 +72,8 @@ const weather_reducer = (state = initialState, action) => {
         case SET_SETTINGS_WINDVISUALIZATION:
             return {
                 ...state,
-                settings: {...state.settings,
+                settings: {
+                    ...state.settings,
                     windVisualization: action.settings.windVisualization,
                 }
             }
@@ -79,7 +81,8 @@ const weather_reducer = (state = initialState, action) => {
         case SET_SETTINGS_SCALETEMPERATURE:
             return {
                 ...state,
-                settings: {...state.settings,
+                settings: {
+                    ...state.settings,
                     scaleTemperature: action.settings.scaleTemperature,
                 }
             }
@@ -87,7 +90,8 @@ const weather_reducer = (state = initialState, action) => {
         case SET_SETTINGS_THEME:
             return {
                 ...state,
-                settings: {...state.settings,
+                settings: {
+                    ...state.settings,
                     theme: action.settings.theme,
                 }
             }
@@ -95,7 +99,8 @@ const weather_reducer = (state = initialState, action) => {
         case SET_SETTINGS_LANGUAGE:
             return {
                 ...state,
-                settings: {...state.settings,
+                settings: {
+                    ...state.settings,
                     language: action.settings.language,
                 }
             }
@@ -183,9 +188,14 @@ export const handleHistoryWeather = (settings) => {
 export const handleCurrentIp = () => {
     return (dispatch) => {
         fetchIp.fromCurrent().then(data => {
-            //console.log(data)
+/*            let lang = data.languages.split(',');
+            console.log(lang);
+            if (!lang.includes('ru')) {
+                dispatch(setSettingsLanguage({language: 'en'}));
+            }*/
             // TODO: validation data.city
             dispatch(setSettings({location: data.city}));
+
         });
     }
 }

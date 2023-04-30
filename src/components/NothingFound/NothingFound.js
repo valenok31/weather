@@ -1,13 +1,20 @@
 import React from "react";
 import {connect} from "react-redux";
-import {setSettings, toggleIsLocationView} from "../../redux/weather_reducer";
+import {handleCurrentIp, setSettings, toggleIsLocationView} from "../../redux/weather_reducer";
 import s from "./NothingFound.module.css";
 import LocationSearch from "../Location/LocationSearch/LocationSearch";
+import target from "../icons/target.png";
 
 class NothingFound extends React.Component {
 
 
     render() {
+
+        function isSetSettings() {
+            // TODO: not work:(
+            debugger;
+            this.props.handleCurrentIp();
+        }
 
         return (<>
                 <div>
@@ -18,6 +25,11 @@ class NothingFound extends React.Component {
 
                         <div className={s.forecastday__box}>
                             <div></div>
+                            <span onClick={() => {
+                                isSetSettings()
+                            }}>
+                                <img src={target} className={s.iconSearch}/>
+                            </span>
                             <LocationSearch setSettings={this.props.setSettings}
                                             currentLocation={{name: ''}}
                                             toggleIsLocationView={this.props.toggleIsLocationView}/>
@@ -41,7 +53,8 @@ let mapStateToProps = (state) => {
 
 let resultConnecting = connect(mapStateToProps, {
     setSettings,
-    toggleIsLocationView
+    toggleIsLocationView,
+    handleCurrentIp
 })(NothingFound);
 
 export default resultConnecting;
