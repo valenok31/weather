@@ -34,8 +34,7 @@ class LocationClass extends React.Component {
             if (this.props.getSettings.location === 'auto:ip') {
                 this.props.setSettings({location: currentLocation.name});
             }
-// TODO: clickNoLocation
-
+            // TODO: clickNoLocation
             return <div className={s.header__top} id='clickNoLocation'>
                 {this.props.getIsLocationView ?
                     <LocationOutput currentLocation={currentLocation}

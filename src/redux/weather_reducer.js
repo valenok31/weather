@@ -1,5 +1,4 @@
 import {fetchIp, fetchWeather} from "../api/api_weather";
-import LocationSearch from "../components/Location/LocationSearch/LocationSearch";
 
 const SET_CURRENT_WEATHER = 'SET_CURRENT_WEATHER';
 const SET_FORECAST_WEATHER = 'SET_FORECAST_WEATHER';
@@ -184,15 +183,14 @@ export const handleHistoryWeather = (settings) => {
     }
 }
 
-
 export const handleCurrentIp = () => {
     return (dispatch) => {
         fetchIp.fromCurrent().then(data => {
-/*            let lang = data.languages.split(',');
-            console.log(lang);
-            if (!lang.includes('ru')) {
-                dispatch(setSettingsLanguage({language: 'en'}));
-            }*/
+            /*            let lang = data.languages.split(',');
+                        console.log(lang);
+                        if (!lang.includes('ru')) {
+                            dispatch(setSettingsLanguage({language: 'en'}));
+                        }*/
             // TODO: validation data.city
             dispatch(setSettings({location: data.city}));
 

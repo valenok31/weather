@@ -12,8 +12,7 @@ class NothingFound extends React.Component {
 
         function isSetSettings() {
             // TODO: not work:(
-            debugger;
-            this.props.handleCurrentIp();
+            //this.props.handleCurrentIp();
         }
 
         return (<>

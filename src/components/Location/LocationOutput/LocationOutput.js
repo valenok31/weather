@@ -2,7 +2,6 @@ import React from "react";
 import iconSearch from "../../icons/iconSearch.png";
 import target from "../../icons/target.png";
 import s from "../../Weather/Weather.module.css";
-import {handleCurrentIp} from "../../../redux/weather_reducer";
 
 function LocationOutput(props) {
 
@@ -10,10 +9,9 @@ function LocationOutput(props) {
         props.toggleIsLocationView(false);
     }
 
-        function isSetSettings() {
-            props.handleCurrentIp();
+    function isSetSettings() {
+        props.handleCurrentIp();
     }
-
 
     return <>
                 <span onClick={() => {
@@ -30,7 +28,6 @@ function LocationOutput(props) {
             <span>   </span>
             <img src={iconSearch} className={s.iconSearch}/>
         </span>
-
     </>
 }
 
