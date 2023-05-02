@@ -31,7 +31,7 @@ class CurrentWeather extends React.Component {
     render() {
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
-            let currentLocation = getWeather.location
+            //let currentLocation = getWeather.location
             let currentWeather = getWeather.current
             let nextDay = getWeather.forecast.forecastday
             let windDegree = currentWeather.wind_degree;
