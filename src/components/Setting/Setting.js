@@ -18,6 +18,9 @@ class Setting extends React.Component {
     render() {
         let getWeather = this.props.getSettings
         let lang = getWeather.language;
+        localStorage.setItem('test', 1);
+
+        console.log(localStorage.getItem('test'));
 
         return (<>
                 <Formik
