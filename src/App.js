@@ -10,6 +10,7 @@ import Setting from "./components/Setting/Setting";
 import {l10n} from "./components/accessoryFunctions/localization"
 import {connect} from "react-redux";
 import {compose} from "redux";
+import Login from "./components/Login/Login";
 
 
 class App extends React.Component {
@@ -41,6 +42,7 @@ class App extends React.Component {
                         <Route path='/weatherlist' element={<WeatherList/>}/>
                         <Route path='/current' element={<CurrentWeather/>}/>
                         <Route path='/setting' element={<Setting/>}/>
+                        <Route path='/login' element={<Login/>}/>
                     </Routes>
                 </div>
 
