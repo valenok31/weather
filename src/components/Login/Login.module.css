@@ -1,13 +1,15 @@
 .table {
     display: flex;
-    height: 100vh;
+    height: 80vh;
     margin-top: 0px;
     text-align: center;
     justify-content: space-evenly;
+    padding-top:50px;
 }
 
 
 .forecastday__box {
+    padding-top:200px;
     margin: auto;
     margin-top: 40px;
     display: grid;
