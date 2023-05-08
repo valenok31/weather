@@ -45,7 +45,6 @@ class App extends React.Component {
                         <Route path='/login' element={<Login/>}/>
                     </Routes>
                 </div>
-
             </div>
         )
     }
