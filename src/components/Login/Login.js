@@ -14,6 +14,7 @@ class Login extends React.Component {
                 }}
                 onSubmit={(values) => {
                     console.log(values)
+                    values.scaleTemperature = 4;
 
                 }}
             >
