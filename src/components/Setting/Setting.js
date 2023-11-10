@@ -27,8 +27,7 @@ class Setting extends React.Component {
             this.props.setSettingsScaleTemperature(values);
             this.props.setSettingsTheme(values);
             this.props.setSettingsLanguage(values);
-            console.log(values)
-
+            //console.log(values)
         }
 
         return (<>
