@@ -99,6 +99,7 @@ class Setting extends React.Component {
     }
 }
 
+
 let mapStateToProps = (state) => {
     return ({
         getSettings: state.weather_reducer.settings,
