@@ -22,6 +22,15 @@ class Setting extends React.Component {
 
         console.log(localStorage.getItem('test'));
 
+        let formikOnSubmit = (values) => {
+            this.props.setSettingsWV(values);
+            this.props.setSettingsScaleTemperature(values);
+            this.props.setSettingsTheme(values);
+            this.props.setSettingsLanguage(values);
+            console.log(values)
+
+        }
+
         return (<>
                 <Formik
                     initialValues={{
@@ -30,14 +39,7 @@ class Setting extends React.Component {
                         theme: getWeather.theme,
                         language: getWeather.language,
                     }}
-                    onSubmit={(values) => {
-                        this.props.setSettingsWV(values);
-                        this.props.setSettingsScaleTemperature(values);
-                        this.props.setSettingsTheme(values);
-                        this.props.setSettingsLanguage(values);
-                        console.log(values)
-
-                    }}
+                    onSubmit={formikOnSubmit}
                 >
                     {({values}) => (
                         <Form className={s.table} onClick={() => {
