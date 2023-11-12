@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
     handleCurrentIp,
     handleCurrentWeather,
@@ -12,7 +12,7 @@ import {HeaderContent} from "./HeaderContent";
 import NothingFound from "../NothingFound/NothingFound";
 
 
-class Weather extends React.Component {
+class Weather7 extends React.Component {
 
     componentDidMount() {
         this.props.handleCurrentWeather(this.props.getSettings);
@@ -25,32 +25,42 @@ class Weather extends React.Component {
             this.props.handleForecastWeather(this.props.getSettings);
         }
     }
+}
 
-    render() {
 
-        if (!!this.props.getCurrentWeather.current) {
-            let getWeather = this.props.getCurrentWeather
+ function Weather (props) {
+
+
+    useEffect(()=>{
+        props.handleCurrentWeather(props.getSettings);
+        props.handleForecastWeather(props.getSettings);
+    },[props.getSettings]);
+
+
+
+
+        if (!!props.getCurrentWeather.current) {
+            let getWeather = props.getCurrentWeather
             let currentWeather = getWeather.current
-            let nextDay = getWeather.forecast.forecastday
+            let nextDay = getWeather.forecast.forecastday;
 
 
 
             return (<div>
                     <HeaderContent currentWeather={currentWeather}
                                    nextDay={nextDay}
-                                   toggleIsLocationView={this.props.toggleIsLocationView}
-                                   getSettings={this.props.getSettings}/>
+                                   toggleIsLocationView={props.toggleIsLocationView}
+                                   getSettings={props.getSettings}/>
                 </div>
             )
         } else {
-            if (this.props.getIsNotFound) {
+            if (props.getIsNotFound) {
                 return <NothingFound/>
             } else {
                 return <Preloader/>
             }
         }
     }
-}
 
 let mapStateToProps = (state) => {
     return ({
