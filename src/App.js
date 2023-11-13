@@ -1,6 +1,6 @@
 import s from './App.module.css'
 import {Link, Route, Routes} from 'react-router-dom';
-import React from "react";
+import React, {createContext} from "react";
 import Weather from "./components/Weather/Weather";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import WeatherList from "./components/WeatherList/WeatherList";
@@ -55,6 +55,5 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-
     connect(mapStateToProps, {}))
 (App);
