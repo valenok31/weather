@@ -12,55 +12,33 @@ import {HeaderContent} from "./HeaderContent";
 import NothingFound from "../NothingFound/NothingFound";
 
 
-class Weather7 extends React.Component {
+function Weather(props) {
 
-    componentDidMount() {
-        this.props.handleCurrentWeather(this.props.getSettings);
-        this.props.handleForecastWeather(this.props.getSettings);
-    }
+    useEffect(() => {
+        props.handleCurrentWeather(props.getSettings);
+        props.handleForecastWeather(props.getSettings);
+    }, [props.getSettings]);
 
-    componentDidUpdate(prevProps) {
-        if (this.props.getSettings !== prevProps.getSettings) {
-            this.props.handleCurrentWeather(this.props.getSettings);
-            this.props.handleForecastWeather(this.props.getSettings);
+    if (!!props.getCurrentWeather.current) {
+        let getWeather = props.getCurrentWeather
+        let currentWeather = getWeather.current
+        let nextDay = getWeather.forecast.forecastday;
+
+        return (<div>
+                <HeaderContent currentWeather={currentWeather}
+                               nextDay={nextDay}
+                               toggleIsLocationView={props.toggleIsLocationView}
+                               getSettings={props.getSettings}/>
+            </div>
+        )
+    } else {
+        if (props.getIsNotFound) {
+            return <NothingFound/>
+        } else {
+            return <Preloader/>
         }
     }
 }
-
-
- function Weather (props) {
-
-
-    useEffect(()=>{
-        props.handleCurrentWeather(props.getSettings);
-        props.handleForecastWeather(props.getSettings);
-    },[props.getSettings]);
-
-
-
-
-        if (!!props.getCurrentWeather.current) {
-            let getWeather = props.getCurrentWeather
-            let currentWeather = getWeather.current
-            let nextDay = getWeather.forecast.forecastday;
-
-
-
-            return (<div>
-                    <HeaderContent currentWeather={currentWeather}
-                                   nextDay={nextDay}
-                                   toggleIsLocationView={props.toggleIsLocationView}
-                                   getSettings={props.getSettings}/>
-                </div>
-            )
-        } else {
-            if (props.getIsNotFound) {
-                return <NothingFound/>
-            } else {
-                return <Preloader/>
-            }
-        }
-    }
 
 let mapStateToProps = (state) => {
     return ({
