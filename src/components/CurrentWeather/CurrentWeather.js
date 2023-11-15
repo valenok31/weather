@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Preloader from "../Preloader/Preloader";
 import {connect} from "react-redux";
 import {
@@ -11,50 +11,40 @@ import {
 import {HeaderContent} from "./CurrentHeaderContent";
 import NothingFound from "../NothingFound/NothingFound";
 
+function CurrentWeather(props) {
 
-class CurrentWeather extends React.Component {
-
-    componentDidMount() {
-        //this.props.handleCurrentIp();
-        this.props.handleCurrentWeather(this.props.getSettings);
-        this.props.handleForecastWeather(this.props.getSettings);
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.getSettings !== prevProps.getSettings) {
-            this.props.handleCurrentWeather(this.props.getSettings);
-            this.props.handleForecastWeather(this.props.getSettings);
-        }
-    }
+    useEffect(()=>{
+        props.handleCurrentWeather(props.getSettings);
+        props.handleForecastWeather(props.getSettings);
+    },[props.getSettings]);
 
 
-    render() {
-        if (!!this.props.getCurrentWeather.current) {
-            let getWeather = this.props.getCurrentWeather
-            //let currentLocation = getWeather.location
-            let currentWeather = getWeather.current
-            let nextDay = getWeather.forecast.forecastday
-            let windDegree = currentWeather.wind_degree;
-            let windKph = currentWeather.wind_kph;
 
-            return (<>
-                    <div onClick={() => {
-                        this.props.toggleIsLocationView(true)
-                    }}>
-                        <HeaderContent currentWeather={currentWeather}
-                                       nextDay={nextDay}
-                                       windDegree={windDegree}
-                                       windKph={windKph}
-                                       getSettings={this.props.getSettings}/>
-                    </div>
-                </>
-            )
+    if (!!props.getCurrentWeather.current) {
+        let getWeather = props.getCurrentWeather
+        //let currentLocation = getWeather.location
+        let currentWeather = getWeather.current
+        let nextDay = getWeather.forecast.forecastday
+        let windDegree = currentWeather.wind_degree;
+        let windKph = currentWeather.wind_kph;
+
+        return (<>
+                <div onClick={() => {
+                    props.toggleIsLocationView(true)
+                }}>
+                    <HeaderContent currentWeather={currentWeather}
+                                   nextDay={nextDay}
+                                   windDegree={windDegree}
+                                   windKph={windKph}
+                                   getSettings={props.getSettings}/>
+                </div>
+            </>
+        )
+    } else {
+        if (props.getIsNotFound) {
+            return <NothingFound/>
         } else {
-            if (this.props.getIsNotFound) {
-                return <NothingFound/>
-            } else {
-                return <Preloader/>
-            }
+            return <Preloader/>
         }
     }
 }

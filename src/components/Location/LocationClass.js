@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import LocationOutput from "./LocationOutput/LocationOutput";
 import LocationSearch from "./LocationSearch/LocationSearch";
 import s from "./Location.module.css";
@@ -12,44 +12,35 @@ import {
 } from "../../redux/weather_reducer";
 
 
-class LocationClass extends React.Component {
+function LocationClass(props) {
 
-    componentDidMount() {
-        this.props.handleCurrentWeather(this.props.getSettings);
-        this.props.handleForecastWeather(this.props.getSettings);
-    }
+    useEffect(() => {
+        props.handleCurrentWeather(props.getSettings);
+        props.handleForecastWeather(props.getSettings);
+    }, [props.getSettings])
 
-    componentDidUpdate(prevProps) {
-        if (this.props.getSettings !== prevProps.getSettings) {
-            this.props.handleCurrentWeather(this.props.getSettings);
-            this.props.handleForecastWeather(this.props.getSettings);
 
+    if (!!props.getCurrentWeather.current) {
+        let getWeather = props.getCurrentWeather;
+        let currentLocation = getWeather.location;
+        if (props.getSettings.location === 'auto:ip') {
+            props.setSettings({location: currentLocation.name});
         }
+        // TODO: clickNoLocation
+        return <div className={s.header__top} id='clickNoLocation'>
+            {props.getIsLocationView ?
+                <LocationOutput currentLocation={currentLocation}
+                                toggleIsLocationView={props.toggleIsLocationView}
+                                handleCurrentIp={props.handleCurrentIp}
+                                setSettings={props.setSettings}
+                                getSettings={props.getSettings}/> :
+                <LocationSearch setSettings={props.setSettings}
+                                getSettings={props.getSettings}
+                                currentLocation={currentLocation}
+                                toggleIsLocationView={props.toggleIsLocationView}/>}
+        </div>
     }
 
-    render() {
-        if (!!this.props.getCurrentWeather.current) {
-            let getWeather = this.props.getCurrentWeather;
-            let currentLocation = getWeather.location;
-            if (this.props.getSettings.location === 'auto:ip') {
-                this.props.setSettings({location: currentLocation.name});
-            }
-            // TODO: clickNoLocation
-            return <div className={s.header__top} id='clickNoLocation'>
-                {this.props.getIsLocationView ?
-                    <LocationOutput currentLocation={currentLocation}
-                                    toggleIsLocationView={this.props.toggleIsLocationView}
-                                    handleCurrentIp={this.props.handleCurrentIp}
-                                    setSettings={this.props.setSettings}
-                                    getSettings={this.props.getSettings}/> :
-                    <LocationSearch setSettings={this.props.setSettings}
-                                    getSettings={this.props.getSettings}
-                                    currentLocation={currentLocation}
-                                    toggleIsLocationView={this.props.toggleIsLocationView}/>}
-            </div>
-        }
-
-    }
 }
 
 let mapStateToProps = (state) => {

@@ -5,19 +5,20 @@ import {temperatureGradient} from "../accessoryFunctions/temperatureGradient";
 import {dateConverter} from "../accessoryFunctions/dateСonverter";
 
 export function WeatherForecastGrid(props) {
-    let lang=props.getSettings.language;
+    let lang = props.getSettings.language;
+
     function roundFunc(numbers) {
-        if(!props.getSettings.scaleTemperature){
-            numbers = numbers*9/5+32;
-            return (numbers > 0 ? '+' : '') + Math.round(numbers)+'°F';
+        if (!props.getSettings.scaleTemperature) {
+            numbers = numbers * 9 / 5 + 32;
+            return (numbers > 0 ? '+' : '') + Math.round(numbers) + '°F';
         }
-        return (numbers > 0 ? '+' : '') + Math.round(numbers)+'°C';
+        return (numbers > 0 ? '+' : '') + Math.round(numbers) + '°C';
     }
 
     let nextDayArr = props.nextDay.map((forecastday) => {
         return <div className={s.forecastday__day}
                     style={temperatureGradient(forecastday.day.maxtemp_c)}>
-            <div><b>{dateConverter(forecastday.date,false,lang)}</b></div>
+            <div><b>{dateConverter(forecastday.date, false, lang)}</b></div>
             <div>{roundFunc(forecastday.day.mintemp_c)} ... {roundFunc(forecastday.day.maxtemp_c)}</div>
             <div>{forecastday.day.maxwind_mph} m/s
                 <div className={s.img_direction__circle}>
