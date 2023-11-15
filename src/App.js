@@ -13,41 +13,38 @@ import {compose} from "redux";
 import Login from "./components/Login/Login";
 
 
-class App extends React.Component {
+function App(props) {
 
-    render() {
-
-        let lang = this.props.getSettings.language
-        return (<div className={s.app__header}>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">{l10n['Forecast for 3 days (hourly)'][lang]}</Link>
-                        </li>
-                        <li>
-                            <Link to="/weatherlist">{l10n['Forecast for 3 days (list)'][lang]}</Link>
-                        </li>
-                        <li>
-                            <Link to="/current">{l10n['Current'][lang]}</Link>
-                        </li>
-                        <li>
-                            <Link to="/setting">{l10n['Setting'][lang]}</Link>
-                        </li>
-                    </ul>
-                </nav>
-                <div>
-                    <LocationClass/>
-                    <Routes>
-                        <Route path='/' element={<Weather stateButton='0'/>}/>
-                        <Route path='/weatherlist' element={<WeatherList/>}/>
-                        <Route path='/current' element={<CurrentWeather/>}/>
-                        <Route path='/setting' element={<Setting/>}/>
-                        <Route path='/login' element={<Login/>}/>
-                    </Routes>
-                </div>
+    let lang = props.getSettings.language
+    return (<div className={s.app__header}>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="/">{l10n['Forecast for 3 days (hourly)'][lang]}</Link>
+                    </li>
+                    <li>
+                        <Link to="/weatherlist">{l10n['Forecast for 3 days (list)'][lang]}</Link>
+                    </li>
+                    <li>
+                        <Link to="/current">{l10n['Current'][lang]}</Link>
+                    </li>
+                    <li>
+                        <Link to="/setting">{l10n['Setting'][lang]}</Link>
+                    </li>
+                </ul>
+            </nav>
+            <div>
+                <LocationClass/>
+                <Routes>
+                    <Route path='/' element={<Weather stateButton='0'/>}/>
+                    <Route path='/weatherlist' element={<WeatherList/>}/>
+                    <Route path='/current' element={<CurrentWeather/>}/>
+                    <Route path='/setting' element={<Setting/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                </Routes>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 let mapStateToProps = (state) => ({
